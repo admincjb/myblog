@@ -14,7 +14,7 @@
     <tbody>
 
     <tr class="gradeX" th:each="article : ${articleList}">
-        <td>12</td>
+        <td th:text="${article.id}"></td>
         <td>
             <a target="_blank" th:href="'/article/'+${article.id}" th:text="${article.title}">
             </a>

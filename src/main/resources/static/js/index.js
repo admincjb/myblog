@@ -30,7 +30,7 @@ $(function () {
 }*/
 /*将初始化页面封装成一个方法*/
 function initPage(id) {
-    console.log(pager.totalCount);
+
     $("#total-num").text(pager.totalCount);
     $("#total-page").text(pager.totalPageNum);
     $("#current-page").text(pager.page);
@@ -89,7 +89,6 @@ function  loadList(type,id) {
 
 $("#main-article").on('click','.article-tag-link',function () {
     var tagId = $(this).data("id");
-    console.log("tagId:"+tagId);
     var loadPager = {page:1,start:0,limit:10};
     $.ajax({
         type: 'GET',
@@ -103,11 +102,20 @@ $("#main-article").on('click','.article-tag-link',function () {
     });
 })
 
-
+/*文章归档点击事件*/
+$(".archive-list-link").on('click',function () {
+    var createTime = $(this).data("id");
+    var count  = $(this).next().text();
+    pager.totalCount = count;
+    pager.totalPageNum = Math.floor(count/pager.limit)+1;
+    pager.page = 1;
+    $("#pagination").data("type","createTime");
+    initPage(createTime);
+})
+/*文章分类点击事件*/
 $(".category-list-link").on('click',function () {
     var categoryId = $(this).data("id");
     var loadPager = {page:1,start:0,limit:10};
-    console.log("categoryId:"+categoryId);
     $.ajax({
         type: 'GET',
         url: '/pager/categories/' + categoryId,
@@ -135,4 +143,5 @@ $("#main-article").on('click','.article-category-link',function () {
         }
     });
 })
+
 
