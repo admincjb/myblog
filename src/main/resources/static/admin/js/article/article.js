@@ -1,3 +1,4 @@
+var pager = {page:1,start:0,limit:10};
 $(function() {
     $("#article-manage-li").addClass("active");
     $("#article-list-li").addClass("active");
@@ -5,13 +6,16 @@ $(function() {
     if (page == null || page == 0) {
         page = 1;
     }
+    pager.page = page;
     $.ajax({
         url: '/admin/article/initPage',
-        data: 'page=' + page,
+        data: pager,
         success: function (data) {
+            pager = data;
             $("#total-num").text(data.totalCount);
             $("#total-page").text(data.totalPageNum);
             $("#current-page").text(data.page);
+            //初始化分页
             $.jqPaginator('#pagination', {
                 totalPages: data.totalPageNum,
                 visiblePages: 5,
@@ -22,6 +26,7 @@ $(function() {
                 onPageChange: function (num, type) {
                     // 加载管理员列表
                     $("#current-page").text(num);
+                    pager.page = num;
                     loadArticleList();
                     $(".chosen-select").chosen({
                         max_selected_options: 5,
@@ -66,10 +71,6 @@ function updateStatue(id,flag){
 // 加载文章列表
 function loadArticleList(){
 
-	var page = $("#page").val();
-	if(isEmpty(page) || page == 0){
-		page = 1;
-	}
     var categoryId = $("#categoryId option:selected").val();
     var keyword = $("#keyword").val();
     var tagIds = [];
@@ -79,7 +80,7 @@ function loadArticleList(){
 	// 查询列表
 	$.ajax({
         url : '/admin/article/load',
-        data : 'page='+page+"&categoryId="+categoryId+"&title="+keyword+"&tagIds="+tagIds,
+        data : 'totalCount='+pager.totalCount+'&page='+pager.page+"&categoryId="+categoryId+"&title="+keyword+"&tagIds="+tagIds,
         success  : function(data) {
         	$("#dataList").html(data);
 		}

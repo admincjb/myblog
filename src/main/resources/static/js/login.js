@@ -2,19 +2,20 @@
  * Created by EumJi on 2017/4/9.
  */
 
-$("#login-button").click(function () {
+/*$("#login-button").click(function () {
     loginSubmit();
-});
+});*/
 
 $("input").keydown(function(e){
     if (e.keyCode==13) {
-        loginSubmit();
+        $("form").submit();
     }
 });
 
 
 
 function loginSubmit(){
+
     var username = $("#username").val();
     var password = $("#password").val();
     if (username.length > 0 && password.length > 0) {
