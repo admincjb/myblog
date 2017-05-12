@@ -14,6 +14,8 @@ spring:
       charset: utf-8
     converters:
       preferred-json-mapper: jackson
+  application:
+    name: zblog
 
 #mynatis配置
 mybatis:
