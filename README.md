@@ -33,15 +33,17 @@
 
 4 - start the modules using the command **java -jar target/zblog-1.0.0-SNAPSHOT.jar**
 
-5 - Type **http://localhost:8001/** into your browser
+5 - Type **http://localhost:8080/** into your browser
 
 
 
 修改记录
 
 ## 2017年4月19日
-博客的雏形已经完成,
-后续的是更多的稳定性和功能性的修改.
+
+1.博客的雏形已经完成,
+
+2.后续的是更多的稳定性和功能性的修改.
 
 
 
@@ -100,6 +102,13 @@
 
 8.部分静态资源走cdn
 
+## 2017年5月14日
+
+1.修复后台启用和关闭文章的提示框
+
+2.后续计划,将博客引入redis等缓存框架
+
+3.优化
 
 
 ## License
