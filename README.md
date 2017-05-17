@@ -36,6 +36,11 @@
 5 - Type **http://localhost:8080/** into your browser
 
 
+## 后台模块
+
+登陆路径 /login
+默认账号 admin
+默认密码 admin
 
 修改记录
 
