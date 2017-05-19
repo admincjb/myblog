@@ -59,38 +59,46 @@ function loadPartnerList() {
 
 
 // 搜索
-function search() {
+$("#partner-search").on('click',function () {
     loadPartnerList();
-}
+
+});
 
 // 删除栏目
-function deletePartner(id) {
-    new $.flavr().confirm('Are you sure to delete?',
-        function () {
-            $.ajax({
-                url: '/admin/partner/delete',
-                data: 'id=' + id,
-                success: function (data) {
-                    if (data.resultCode == 'success') {
-                        autoCloseAlert(data.errorInfo, 1000);
-                        loadPartnerList();
-                    } else {
-                        autoCloseAlert(data.errorInfo, 1000);
-                    }
+$("#dataList").on('click','.partner-delete',function () {
+    new $.flavr({
+        content: '确定要删除吗?',
+        buttons: {
+            primary: {
+                text: '确定', style: 'primary', action: function () {
+                    $.ajax({
+                        url: '/admin/partner/delete/' + $(this).parent().data("id"),
+                        method: "GET",
+                        success: function (data) {
+                            if (data.resultCode == 'success') {
+                                autoCloseAlert(data.errorInfo, 1000);
+                                loadPartnerList();
+                            } else {
+                                autoCloseAlert(data.errorInfo, 1000);
+                            }
+                        }
+                    });
                 }
-            });
-        },
-        function () {
-        });
+            },
+            success: {
+                text: '取消', style: 'danger', action: function () {
 
-}
+                }
+            }
+        }
+    });
+});
 
 // 跳转栏目编辑页
-function editPartner(id) {
-
+$("#dataList").on('click','.partner-edit',function () {
     $.ajax({
-        url: '/admin/partner/editJump',
-        data: 'id=' + id,
+        url: '/admin/partner/editJump/'+$(this).parent().data("id"),
+        method: "GET",
         success: function (data) {
             $('#editPartnerContent').html(data);
             $('#editPartnerModal').modal('show');
@@ -98,10 +106,11 @@ function editPartner(id) {
             $('#editPartnerModal').addClass('flipInY');
         }
     });
-}
+});
+
 
 // 跳转新增页面
-function addPartner() {
+$("#partner-add").on("click",function () {
     $.ajax({
         url: '/admin/partner/addJump',
         success: function (data) {
@@ -111,7 +120,8 @@ function addPartner() {
             $('#addPartnerModal').addClass('bounceInLeft');
         }
     });
-}
+});
+
 
 
 

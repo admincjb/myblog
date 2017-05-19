@@ -10,6 +10,7 @@ import com.eumji.zblog.vo.Partner;
 import com.eumji.zblog.vo.Tag;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
@@ -87,8 +88,8 @@ public class AdminPageController {
         return "admin/partner/partnerAdd";
     }
 
-    @RequestMapping("/partner/editJump")
-    public String partnerEditPage(Integer id,Model model){
+    @RequestMapping("/partner/editJump/{id}")
+    public String partnerEditPage(@PathVariable Integer id, Model model){
         Partner partner = partnerService.getPartnerById(id);
         model.addAttribute("partner",partner);
         return "admin/partner/partnerEdit";

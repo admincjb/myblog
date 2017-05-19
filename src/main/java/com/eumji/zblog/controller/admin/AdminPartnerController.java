@@ -5,6 +5,7 @@ import com.eumji.zblog.util.ResultInfo;
 import com.eumji.zblog.util.ResultInfoFactory;
 import com.eumji.zblog.vo.Pager;
 import com.eumji.zblog.vo.Partner;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,8 +63,8 @@ public class AdminPartnerController {
        return ResultInfoFactory.getSuccessResultInfo();
 
     }
-    @RequestMapping("/delete")
-    public ResultInfo deletePartner(Integer id){
+    @RequestMapping("/delete/{id}")
+    public ResultInfo deletePartner(@PathVariable Integer id){
         try {
             partnerService.deletePartner(id);
         }catch (Exception e){
