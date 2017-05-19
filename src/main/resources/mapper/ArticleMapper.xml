@@ -50,8 +50,8 @@
         <if test="categoryId != null and categoryId != ''">
             and categoryId = #{categoryId}
         </if>
-        <if test="tags != null and tags.length>0">
-            and article.id in (select DISTINCT articleId from articletag where articletag.id in
+        <if test="tags != null and tags != ''">
+            and article.id in (select DISTINCT articleId from articletag where articletag.tagId in
             <foreach collection="tags" item="item" index="index" open="(" separator="," close=")">
                 #{item}
             </foreach>
