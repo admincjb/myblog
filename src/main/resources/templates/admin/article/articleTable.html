@@ -16,7 +16,7 @@
     <tr class="gradeX" th:each="article : ${articleList}">
         <td th:text="${article.id}"></td>
         <td>
-            <a target="_blank" th:href="'/article/'+${article.id}" th:text="${article.title}">
+            <a target="_blank" th:href="'/article/details/'+${article.id}" th:text="${article.title}">
             </a>
         </td>
         <td th:text="${article.categoryName}">

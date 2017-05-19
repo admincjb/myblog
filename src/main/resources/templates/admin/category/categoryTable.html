@@ -17,9 +17,12 @@
         <td th:text="${category.categoryName}"></td>
         <td th:text="${category.aliasName}"></td>
         <td th:text="${category.sort}"></td>
-        <td>
+        <td th:data-id="${category.id}">
             <button  type="button" class="btn btn-primary btn-xs" title="编辑" th:onclick="'editCategory('+${category.id}+')'">
                 编辑
+            </button>
+            <button class="btn btn-danger btn-xs category-delete" type="button" title="删除">
+                删除
             </button>
 
         </td>

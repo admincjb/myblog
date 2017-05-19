@@ -7,6 +7,7 @@ import com.eumji.zblog.vo.Category;
 import com.eumji.zblog.vo.Pager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -145,5 +146,29 @@ public class AdminCategoryController {
         return ResultInfoFactory.getSuccessResultInfo();
     }
 
+    /**
+     * 删除之前查询是否存在文章
+     * @param categoryId
+     * @return
+     */
+    @RequestMapping("/query/{categoryId}")
+    @ResponseBody
+    public ResultInfo checkExist(@PathVariable Integer categoryId){
+        int count = categoryService.getArticleCountByCategoryId(categoryId);
+        if (count > 0){
+            return ResultInfoFactory.getErrorResultInfo("当前分类已存在文章");
+        }
+        return ResultInfoFactory.getSuccessResultInfo();
+    }
+
+    @RequestMapping("/delete/{categoryId}")
+    @ResponseBody
+    public ResultInfo deleteCategory(@PathVariable Integer categoryId){
+        boolean flag = categoryService.deleteCategoryById(categoryId);
+        if (flag){
+            return ResultInfoFactory.getErrorResultInfo("删除分类成功！！！");
+        }
+        return ResultInfoFactory.getErrorResultInfo();
+    }
 
 }

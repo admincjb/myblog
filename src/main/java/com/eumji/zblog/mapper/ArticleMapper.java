@@ -82,4 +82,6 @@ public interface ArticleMapper {
     List<Map> articleArchiveList();
 
     List<ArticleCustom> loadArticleByArchive(@Param("pager") Pager pager, @Param("createTime") String createTime);
+
+    void updateCategoryId(Integer categoryId);
 }

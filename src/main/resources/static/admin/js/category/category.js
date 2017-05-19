@@ -73,16 +73,45 @@ function buildParam(){
 function search(){
     loadCategoryList();
 }
+//绑定删除分类的点击事件
+$("#dataList").on('click','.category-delete',function () {
+    var categoryId = $(this).parent().data("id");
+    $.ajax({
+        url:"/admin/category/query/"+categoryId,
+        method: "GET",
+        success : function (data) {
+            if (data.resultCode == 'fail'){
+                new $.flavr({
+                    content: '删除分类将会将此分类的文章移除此分类，您确定要删除吗?',
 
-// 删除
+                    buttons: {
+                        primary: {
+                            text: '确定', style: 'primary', action: function () {
+                                deleteCategory(categoryId);
+                            }
+                        },
+                        success: {
+                            text: '取消', style: 'danger', action: function () {
+
+                            }
+                        }
+                    }
+                });
+            }else {
+                deleteCategory(categoryId);
+            }
+        }
+
+    });
+})
+// 删除分类的ajax方法
 function deleteCategory(id){
     $.ajax({
-        url : '/admin/category/delete',
-        data : 'id='+id,
-        success  : function(data) {
+        url: "/admin/category/delete/"+id,
+        success : function (data) {
             if(data.resultCode == 'success'){
+                window.href.location = "/admin/category/list";
                 autoCloseAlert(data.errorInfo,1000);
-                window.href.location = "/admin/tag/list";
             }else{
                 autoCloseAlert(data.errorInfo,1000);
             }

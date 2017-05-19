@@ -160,7 +160,7 @@ function save() {
                     buttons: {
                         primary: {
                             text: '再写一篇', style: 'primary', action: function () {
-                                window.location.href = "/admin/article/list";
+                                window.location.href = "/admin/article/addPage";
                             }
                         },
                         success: {

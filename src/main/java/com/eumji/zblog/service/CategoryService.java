@@ -40,4 +40,8 @@ public interface CategoryService {
     void ArticleCatePage(Pager pager, int categoryId);
 
     List<ArticleCustom> loadArticleByArchive(String createTime, Pager pager);
+
+    int getArticleCountByCategoryId(Integer categoryId);
+
+    boolean deleteCategoryById(Integer categoryId);
 }

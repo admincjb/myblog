@@ -71,5 +71,8 @@
         select count(id) from article where categoryId = #{categoryId} and status = 1
     </select>
 
+    <delete id="deleteCategoryById">
+        delete from category where id = #{categoryId}
+    </delete>
 </mapper>
 

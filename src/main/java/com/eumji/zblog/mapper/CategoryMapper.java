@@ -45,4 +45,5 @@ public interface CategoryMapper {
      */
     int ArticleCatePage(int categoryId);
 
+    void deleteCategoryById(Integer categoryId);
 }

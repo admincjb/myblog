@@ -91,4 +91,16 @@ public class CategoryServiceImpl implements CategoryService {
         return articleMapper.loadArticleByArchive(pager,createTime);
     }
 
+    @Override
+    public int getArticleCountByCategoryId(Integer categoryId) {
+        return categoryMapper.ArticleCatePage(categoryId);
+    }
+
+    @Override
+    public boolean deleteCategoryById(Integer categoryId) {
+        categoryMapper.deleteCategoryById(categoryId);
+        articleMapper.updateCategoryId(categoryId);
+        return true;
+    }
+
 }
