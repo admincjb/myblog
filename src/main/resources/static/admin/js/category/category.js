@@ -38,11 +38,10 @@ function toPage(page){
     loadCategoryList();
 }
 
-// 加载管理员列表
+// 加载分类列表
 function loadCategoryList(){
     // 收集参数
-    var param = buildParam();
-
+    var keyword = $("#keyword").val();
     var page = $("#current-page").text();
     if(isEmpty(page) || page == 0){
         page = 1;
@@ -51,7 +50,7 @@ function loadCategoryList(){
     // 查询列表
     $.ajax({
         url : '/admin/category/load',
-        data : 'page='+page+"&param="+param,
+        data : 'page='+page+"&categoryName="+keyword,
         success  : function(data) {
             $("#dataList").html(data);
         }
@@ -59,20 +58,11 @@ function loadCategoryList(){
 
 }
 
-// 收集参数
-function buildParam(){
-    var param = {};
-    var keyword = $("#keyword").val();
-    if(!isEmpty(keyword)){
-        param["categoryName"] = encodeURI(encodeURI(keyword));
-    }
-    return JSON.stringify(param);
-}
 
 // 搜索
-function search(){
+$("#category-search").on("click",function () {
     loadCategoryList();
-}
+});
 //绑定删除分类的点击事件
 $("#dataList").on('click','.category-delete',function () {
     var categoryId = $(this).parent().data("id");
@@ -120,10 +110,10 @@ function deleteCategory(id){
 }
 
 // 跳转编辑页
-function editCategory(id){
+$("#dataList").on('click','.category-edit',function () {
     $.ajax({
-        url : '/admin/category/editJump/',
-        data: {id:id},
+        url : '/admin/category/editJump/'+$(this).parent().data("id"),
+        method:"GET",
         success  : function(data) {
             $('#editCategoryContent').html(data);
             $('#editCategoryModal').modal('show');
@@ -131,20 +121,21 @@ function editCategory(id){
             $('#editCategoryModal').addClass('flipInY');
         }
     });
-}
+});
 
-// 关闭编辑管理员窗口
+
+// 关闭编辑分类窗口
 function closeEditWindow(){
     $('#editCategoryModal').modal('hide');
 }
 
-// 关闭新增管理员窗口
+// 关闭新增分类窗口
 function closeAddWindow(){
     $('#addCategoryModal').modal('hide');
 }
 
 
-// 编辑管理员
+// 编辑分类
 function saveEditCategory(){
     if(validateEditCategory()){
         $.ajax({
@@ -155,7 +146,7 @@ function saveEditCategory(){
                     $('#editCategoryModal').modal('hide');
                     closeEditWindow();
                     autoCloseAlert(data.errorInfo,1000);
-                    window.href.location = "/admin/tag/list";
+                    window.location.href = "/admin/category/list";
                 }else{
                     autoCloseAlert(data.errorInfo,1000);
                 }
@@ -164,7 +155,7 @@ function saveEditCategory(){
     }
 }
 
-// 新增管理员
+// 保存分类
 function saveAddCategory(){
     if(validateAddCategory()){
         $.ajax({
@@ -184,7 +175,7 @@ function saveAddCategory(){
     }
 }
 
-// 校验新增管理员输入框
+// 校验新增分类输入框
 function validateAddCategory(){
     var categoryName = $("#categoryName").val();
     var aliasName = $("#aliasName").val();
@@ -209,7 +200,7 @@ function validateAddCategory(){
     return true;
 }
 
-// 校验编辑管理员输入框
+// 校验编辑分类输入框
 function validateEditCategory(){
     var CategoryName = $("#categoryName").val();
     var aliasName = $("#aliasName").val();
@@ -235,8 +226,8 @@ function validateEditCategory(){
     return true;
 }
 
-// 跳转新增管理员页面
-function addCategory(){
+// 跳转新增分类页面
+$("#category-add").on("click",function () {
     $.ajax({
         url : '/admin/category/addJump',
         success  : function(data) {
@@ -246,4 +237,4 @@ function addCategory(){
             $('#addCategoryModal').addClass('bounceInLeft');
         }
     });
-}
+});

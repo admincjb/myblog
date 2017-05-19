@@ -63,13 +63,13 @@ public class AdminCategoryController {
 
     /**
      * 跳转修改页面
-     * @param id
+     * @param categoryId 分类id
      * @param model
      * @return
      */
-    @RequestMapping("/editJump")
-    public String editPage(Integer id,Model model){
-        Category category = categoryService.getCategoryById(id);
+    @RequestMapping("/editJump/{categoryId}")
+    public String editPage(@PathVariable Integer categoryId,Model model){
+        Category category = categoryService.getCategoryById(categoryId);
         model.addAttribute("category",category);
         return "admin/category/categoryEdit";
     }
