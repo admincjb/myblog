@@ -31,17 +31,10 @@ $(function() {
 });
 
 
-// 跳转分页
-function toPage(page){
-	$("#page").val(page);
-	loadTagList();		
-}
-
 // 加载管理员列表
 function loadTagList(){
 	// 收集参数
-	var param = buildParam();
-	
+	var param = $("#keyword").val();
 	var page = $("#current-page").text();
 	if(isEmpty(page) || page == 0){
 		page = 1;
@@ -50,7 +43,7 @@ function loadTagList(){
 	// 查询列表
 	$.ajax({
         url : '/admin/tag/load',
-        data : 'page='+page+"&param="+param,
+        data : 'page='+page+"&tagName="+param,
         success  : function(data) {
         	$("#dataList").html(data);
 		}
@@ -58,42 +51,48 @@ function loadTagList(){
 
 }
 
-// 收集参数
-function buildParam(){
-	var param = {};
-	var keyword = $("#keyword").val();
-	if(!isEmpty(keyword)){
-		param["tagName"] = encodeURI(encodeURI(keyword));
-	}
-	return JSON.stringify(param);
-}
 
 // 搜索
-function search(){
+$("#tag-search").on('click',function () {
 	loadTagList();
-}
+});
 
 // 删除
-function deleteTag(id){
-	$.ajax({
-        url : '/admin/tag/delete',
-        data : 'id='+id,
-        success  : function(data) {
-        	if(data.resultCode == 'success'){
-        		autoCloseAlert(data.errorInfo,1000);
-        		window.href.location = "/admin/tag/list";
-        	}else{
-        		autoCloseAlert(data.errorInfo,1000);
-        	}
-		}
+$("#dataList").on('click','.tag-delete',function () {
+    new $.flavr({
+        content: '确定要删除吗?',
+        buttons: {
+            primary: {
+                text: '确定', style: 'primary', action: function () {
+                    $.ajax({
+                        url : '/admin/tag/delete/'+$(this).parent().data("id"),
+                        method: "GET",
+                        success  : function(data) {
+                            if(data.resultCode == 'success'){
+                                autoCloseAlert(data.errorInfo,1000);
+                                window.href.location = "/admin/tag/list";
+                            }else{
+                                autoCloseAlert(data.errorInfo,1000);
+                            }
+                        }
+                    });
+                }
+            },
+            success: {
+                text: '取消', style: 'danger', action: function () {
+
+                }
+            }
+        }
     });
-}
+
+});
 
 // 跳转编辑页
-function editTag(id){
+$("#dataList").on('click','.tag-edit',function () {
 	$.ajax({
-        url : '/admin/tag/editJump/',
-        data: {id:id},
+        url : '/admin/tag/editJump/'+$(this).parent().data("id"),
+      	method: "GET",
         success  : function(data) {
         	$('#editTagContent').html(data);
         	$('#editTagModal').modal('show');
@@ -101,7 +100,7 @@ function editTag(id){
         	$('#editTagModal').addClass('flipInY');
 		}
     });
-}
+});
 
 // 关闭编辑管理员窗口
 function closeEditWindow(){
@@ -193,7 +192,7 @@ function validateEditTag(){
 }
 
 // 跳转新增管理员页面
-function addTag(){
+$("#tag-add").on('click',function () {
 	$.ajax({
         url : '/admin/tag/addJump',
         success  : function(data) {
@@ -203,4 +202,4 @@ function addTag(){
         	$('#addTagModal').addClass('bounceInLeft');
 		}
     });
-}
+});

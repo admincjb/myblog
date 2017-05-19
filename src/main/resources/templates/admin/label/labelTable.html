@@ -16,9 +16,12 @@
         <td th:text="${tag.id}"></td>
         <td th:text="${tag.tagName}"></td>
         <td th:text="${tag.aliasName}"></td>
-        <td>
-            <button class="btn btn-primary btn-xs" type="button" title="编辑" th:onclick="'editTag('+${tag.id}+')'">
+        <td th:data-id="${tag.id}">
+            <button class="btn btn-primary btn-xs tag-edit" type="button" title="编辑">
                 编辑
+            </button>
+            <button  type="button" class="btn btn-danger btn-xs tag-delete" title="删除">
+                删除
             </button>
         </td>
     </tr>

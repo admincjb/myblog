@@ -7,6 +7,7 @@ import com.eumji.zblog.vo.Pager;
 import com.eumji.zblog.vo.Tag;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -38,8 +39,8 @@ public class AdminTagController {
         return pager;
     }
 
-    @RequestMapping("/editJump")
-    public String editPage(Integer id, Model model){
+    @RequestMapping("/editJump/{id}")
+    public String editPage(@PathVariable Integer id, Model model){
         Tag tag = tagService.getTagById(id);
         model.addAttribute("tag",tag);
         return "admin/label/labelEdit";
@@ -53,6 +54,7 @@ public class AdminTagController {
     @RequestMapping("/load")
     public String loadTagList(Pager pager,String tagName,Model model){
         List<Tag> tagList = tagService.loadTagList(pager,tagName);
+        System.out.println(tagList);
         model.addAttribute("tagList",tagList);
         return "admin/label/labelTable";
     }
