@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.eumji.zblog</groupId>
-    <artifactId>zblog</artifactId>
+    <artifactId>eumji-blog</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <parent>
@@ -136,7 +136,7 @@
                 </configuration>
             </plugin>
         </plugins>
-        <finalName>zblog</finalName>
+        <finalName>eumji-blog</finalName>
     </build>
 
 </project>

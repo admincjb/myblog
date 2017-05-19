@@ -1,4 +1,4 @@
-# zblog
+# eumji-blog
 
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
@@ -25,13 +25,13 @@
 
 
 # Steps
-1 - Create the database using the **zblog.sql** file
+1 - Create the database using the **eumji-blog.sql** file
 
 2 - update the database info in resource/application.yml
 
 3 - compile the modules using the command **mvn package -DskipTests**
 
-4 - start the modules using the command **java -jar target/zblog-1.0.0-SNAPSHOT.jar**
+4 - start the modules using the command **java -jar target/eumji-blog.jar**
 
 5 - Type **http://localhost:8080/** into your browser
 
@@ -115,6 +115,14 @@
 
 3.优化
 
+## 2017年5月19日
+
+1.修改原本onclick事件->jquery绑定
+
+## 2017年5月20日
+
+1.zblog改名为eumji-blog 别问我为什么，此名称已存在。
+
 
 ## License
-The zblog is released under version 2.0 of the [Apache License](http://www.apache.org/licenses/LICENSE-2.0).
+The eumji-blog is released under version 2.0 of the [Apache License](http://www.apache.org/licenses/LICENSE-2.0).
