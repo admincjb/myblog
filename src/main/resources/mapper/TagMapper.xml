@@ -12,11 +12,11 @@
         select id,tagName,aliasName from tag where id = #{id}
     </select>
 
-
+    <!--分页条件查询标签列表 2017年5月19日 修复条件查询错误 原因条件语句写成了恒等式 aliasName like aliasName-->
     <select id="loadTagList" resultType="tag">
         select id,tagName,aliasName from tag
         <if test="tagName != null and tagName != ''">
-            where tagName like concat('%',#{tagName},'%') or aliasName like aliasName
+            where tagName like concat('%',#{tagName},'%') or aliasName like concat('%',#{tagName},'%')
         </if>
         limit #{pager.start},#{pager.limit}
     </select>
