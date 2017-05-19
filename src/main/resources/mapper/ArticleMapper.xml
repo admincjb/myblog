@@ -50,6 +50,7 @@
         <if test="categoryId != null and categoryId != ''">
             and categoryId = #{categoryId}
         </if>
+        /*2017年5yue19日 修复bug articletag.tagId错写成articletag.id*/
         <if test="tags != null and tags != ''">
             and article.id in (select DISTINCT articleId from articletag where articletag.tagId in
             <foreach collection="tags" item="item" index="index" open="(" separator="," close=")">

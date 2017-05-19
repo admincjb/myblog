@@ -48,25 +48,36 @@ function toPage(page){
 }
 
 //0:可用  1：不可用 
-function updateStatue(id,flag){
-	flag = flag==1?0:1;
-    new $.flavr().confirm('Are you sure to change status?',
-        function () {
-            $.ajax({
-                url: '/admin/article/updateStatue',
-                data: 'id=' + id + '&status=' + flag,
-                success: function (data) {
-                    if (data.resultCode == 'success') {
-                        autoCloseAlert(data.errorInfo, 1000);
-                        loadArticleList();
-                    } else {
-                        autoCloseAlert(data.errorInfo, 1000);
-                    }
+$("#dataList").on('click','.article-state',function () {
+    var state = $(this).parent().data("state")==1?0:1;
+    var id = $(this).parent().data("id");
+    new $.flavr({
+        content: '确定要修改状态吗?',
+        buttons: {
+            primary: {
+                text: '确定', style: 'primary', action: function () {
+                    $.ajax({
+                        url: '/admin/article/updateStatue',
+                        data: 'id=' + id + '&status=' +state,
+                        success: function (data) {
+                            if (data.resultCode == 'success') {
+                                autoCloseAlert(data.errorInfo, 1000);
+                                loadArticleList();
+                            } else {
+                                autoCloseAlert(data.errorInfo, 1000);
+                            }
+                        }
+                    });
                 }
-            });
-        },function () {
-        });
-}
+            },
+            success: {
+                text: '取消', style: 'danger', action: function () {
+
+                }
+            }
+        }
+    });
+});
 
 // 加载文章列表
 function loadArticleList(){
@@ -90,17 +101,17 @@ function loadArticleList(){
 
 
 // 搜索
-function search(){
-	loadArticleList();
-}
+$("#article-search").on('click',function () {
+ loadArticleList();
+});
 
 // 新增文章  跳转新页
-function addArticle(){
-	window.location.href = "/admin/article/addPage";
-}
+$("#article-add").on('click',function () {
+    window.location.href = "/admin/article/addPage";
+});
 
 // 删除文章
-function deleteArticle(id){
+$("#dataList").on('click','.article-delete',function () {
     new $.flavr({
         content: '您确定要删除吗?',
 
@@ -108,8 +119,8 @@ function deleteArticle(id){
             primary: {
                 text: '确定', style: 'primary', action: function () {
                     $.ajax({
-                        url : '/admin/article/delete',
-                        data : 'id='+id,
+                        url : '/admin/article/delete/'+$(this).parent().data("id"),
+                        method: "GET",
                         success  : function(data) {
                             if(data.resultCode == 'success'){
                                 autoCloseAlert(data.errorInfo,1000);
@@ -130,40 +141,11 @@ function deleteArticle(id){
     });
     // 调到列表页
 
-}
+});
 
-function htmlArticle(id){
-	$.ajax({
-        url : '/admin/article/static/'+id,
-        success  : function(data) {
-        	if(data.resultCode == 'success'){
-        		autoCloseAlert(data.errorInfo,1000);
-        		loadArticleList();
-        	}else{
-        		autoCloseAlert(data.errorInfo,1000);
-        	}
-		}
-    });
-}
 
-// 静态化全部文章
-function htmlAllArticle(){
-	$("#htmlAll").hide();
-	$.ajax({
-        url : '/admin/article/staticAll',
-        success  : function(data) {
-        	if(data.resultCode == 'success'){
-        		autoCloseAlert(data.errorInfo,1000);
-        		loadArticleList();
-        	}else{
-        		autoCloseAlert(data.errorInfo,1000);
-        	}
-        	$("#htmlAll").show();
-		}
-    });
-}
 
 // 编辑文章
-function editArticle(id){
-	window.open("/admin/article/editJump/?id="+id);
-}
+$("#dataList").on('click','.article-edit',function () {
+	window.open("/admin/article/editJump/?id="+$(this).parent().data("id"));
+});

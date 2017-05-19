@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -81,14 +82,18 @@ public class AdminArticleController {
      * @return
      */
     @RequestMapping("/load")
-    public String loadArticle(Pager pager, Integer categoryId, int[] tagIds, String title, Model model) {
+    public String loadArticle(Pager pager, Integer categoryId, String tagIds, String title, Model model) {
         /**
          * 设置start位置
          */
         pager.setStart(pager.getStart());
         //封装查询条件
         Map<String, Object> param = new HashMap<>();
-        param.put("tags", tagIds);
+        if (tagIds != null && !"".equals(tagIds)) {
+            param.put("tags", tagIds.split(","));
+        }else {
+            param.put("tags", null);
+        }
         param.put("categoryId", categoryId);
         param.put("title",title);
         param.put("pager", pager);
@@ -206,9 +211,9 @@ public class AdminArticleController {
         return ResultInfoFactory.getSuccessResultInfo();
     }
 
-    @RequestMapping("/delete")
+    @RequestMapping("/delete/{id}")
     @ResponseBody
-    public ResultInfo deleteArticle(Integer id){
+    public ResultInfo deleteArticle(@PathVariable Integer id){
         try {
 
             articleService.deleteArticle(id);
