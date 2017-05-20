@@ -58,6 +58,11 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='分类表  只支持一级分类  如果需要分多个层次 用标签来协助实现';
 
 -- ----------------------------
+-- add default category
+-- ----------------------------
+insert into category VALUES(9999,'未分类','default',0);
+
+-- ----------------------------
 -- Table structure for log
 -- ----------------------------
 DROP TABLE IF EXISTS `log`;
