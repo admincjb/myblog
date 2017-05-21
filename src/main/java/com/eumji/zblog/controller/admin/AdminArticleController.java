@@ -42,6 +42,8 @@ public class AdminArticleController {
     @Resource
     private ArticleService articleService;
 
+    @Resource
+    private PhotoUploadUtil photoUploadUtil;
 
     //标签service
     @Resource
@@ -234,7 +236,7 @@ public class AdminArticleController {
             File files = new File(System.getProperty("java.io.tmpdir") + System.getProperty("file.separator")+file.getOriginalFilename());
             file.transferTo(files);
 
-            result = PhotoUploadUtil.uploadPhoto(files.getAbsolutePath(), file.getOriginalFilename());
+            result = photoUploadUtil.uploadPhoto(files.getAbsolutePath(), file.getOriginalFilename());
             return result;
         } catch (IOException e) {
             e.printStackTrace();
