@@ -14,7 +14,7 @@
 - Maven
 - MySQL (or other SQL database)
 
-# Main technology
+# 主要技术
 
 - Spring && Spring security && Spring boot
 - Mybatis
@@ -24,7 +24,10 @@
 - editor.md
 
 
-# Steps
+# 安装步骤
+
+0 - download or clone eumji-blog project
+
 1 - Create the database using the **eumji-blog.sql** file
 
 2 - update the database info in resource/application.yml
@@ -39,10 +42,13 @@
 ## 后台模块
 
 登陆路径 /login
+
 默认账号 admin
 默认密码 admin
 
-修改记录
+剩下的随意操作。
+
+# 修改记录
 
 ## 2017年4月19日
 
@@ -61,6 +67,7 @@
 3.修改移动端兼容问题
 
 ## 2017年4月24日
+
 1.修复前端显示的bug
 
 2.修复上一篇和下一篇的问题
@@ -123,6 +130,14 @@
 
 1.zblog改名为eumji-blog 别问我为什么，此名称已存在。
 
+## 2017年5月22日
+
+1.修改七牛云配置硬编码的问题
+
+2.修改图片上传iframe跨域问题
+
+3.修改百度推送的方式
 
 ## License
+
 The eumji-blog is released under version 2.0 of the [Apache License](http://www.apache.org/licenses/LICENSE-2.0).
