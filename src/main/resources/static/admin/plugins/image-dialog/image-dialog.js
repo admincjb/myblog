@@ -185,8 +185,6 @@
                     };
                     dialog.find("[type=\"submit\"]").bind("click", submitHandler).trigger("click");
 
-                    $("form").ajaxForm(options);
-
                     // post-submit callback
                     function showResponse(responseText, statusText, xhr, $form)  {
 
