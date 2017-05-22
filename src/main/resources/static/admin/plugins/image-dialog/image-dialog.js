@@ -148,10 +148,11 @@
                     loading(true);
 
                     var submitHandler = function() {
+                        $("form").ajaxForm(options);
+                        //var uploadIframe = document.getElementById(iframeName);
 
-                        var uploadIframe = document.getElementById(iframeName);
+                       /* uploadIframe.onload = function() {
 
-                        uploadIframe.onload = function() {
 
                             loading(false);
 
@@ -173,11 +174,35 @@
                             }
 
                             return false;
-                        };
+                        };*/
                     };
 
+
+                    var options = {
+                       
+                        success: showResponse,  // post-submit callback
+                        timeout: 5000
+                    };
                     dialog.find("[type=\"submit\"]").bind("click", submitHandler).trigger("click");
-				});
+
+                    $("form").ajaxForm(options);
+
+                    // post-submit callback
+                    function showResponse(responseText, statusText, xhr, $form)  {
+
+                        if (responseText.success === 1)
+                        {
+                            dialog.find("[data-url]").val(responseText.url);
+                        }
+                        else
+                        {
+                            alert(responseText.message);
+                        }
+                        loading(false);
+                    }
+                    return false;
+
+                });
             }
 
 			dialog = editor.find("." + dialogName);
