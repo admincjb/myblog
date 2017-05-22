@@ -5,19 +5,25 @@ import org.apache.ibatis.type.Alias;
 import java.io.Serializable;
 
 /**
- * @author Do
+ * 自定义分类实体
+ * @author eumji
  * @package com.eumji.zblog.vo
- * @name CategoryCustom
- * @date 2017/4/13
- * @time 12:30
+ * @name CategoryCustom.java
+ * @date 2017/4/12
+ * @time 12:34
  */
 @Alias("categoryCustom")
 public class CategoryCustom implements Serializable {
+
     private Integer id;
-    private String categoryName;
-    private String aliasName;
+
+    private String categoryName; //分类名
+
+    private String aliasName;   //分类别名
+
     private Integer sort;
-    private Integer articleCount;
+
+    private Integer articleCount; //此分类下文章的数量
 
     public Integer getId() {
         return id;

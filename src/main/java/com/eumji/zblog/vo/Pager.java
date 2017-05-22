@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Do
+ * 分页信息实体类
+ * @author eumji
  * @package com.eumji.zblog.vo
- * @name Pager
+ * @name Pager.java
  * @date 2017/4/11
  * @time 12:32
  */

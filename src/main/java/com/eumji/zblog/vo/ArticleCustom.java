@@ -7,9 +7,10 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author Do
+ * 自定义文章类
+ * @author eumji
  * @package com.eumji.zblog.vo
- * @name ArticleCustom
+ * @name ArticleCustom.java
  * @date 2017/4/12
  * @time 12:34
  */
@@ -20,15 +21,15 @@ public class ArticleCustom implements Serializable {
     private Integer categoryId; //分类id
     private String categoryName; //分类名称
     private String categoryAliasName; //分类别名
-    private String title;
-    private String content;
-    private String description;
-    private Integer status;
-    private String author;
-    private Date createTime;
-    private Date updateTime;
-    private Integer showCount;
-    private List<ArticleTag> tagList;
+    private String title;   //标题
+    private String content;  //内容
+    private String description; //描述
+    private Integer status;  //状态
+    private String author; //作者
+    private Date createTime;    //创建时间
+    private Date updateTime;    //更新时间
+    private Integer showCount;  //浏览数
+    private List<ArticleTag> tagList;   //标签列表
 
     public Integer getId() {
         return id;

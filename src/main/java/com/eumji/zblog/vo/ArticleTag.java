@@ -5,14 +5,21 @@ import org.apache.ibatis.type.Alias;
 import java.io.Serializable;
 
 /**
-* Created by GeneratorFx on 2017-04-11.
-*/
+ * 文章标签实体
+ * @author eumji
+ * @package com.eumji.zblog.vo
+ * @name ArticleTag.java
+ * @date 2017/4/12
+ * @time 12:34
+ */
 @Alias("articleTag")
 public class ArticleTag implements Serializable {
 
-private Integer articleId;
-private Integer tagId;
-private String tagName;
+private Integer articleId;  //文章id
+
+private Integer tagId;  //标签id
+
+private String tagName;  //标签名
 
     public Integer getArticleId() {
         return articleId;

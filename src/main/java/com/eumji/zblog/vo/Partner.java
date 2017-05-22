@@ -4,7 +4,12 @@ import org.apache.ibatis.type.Alias;
 import java.io.Serializable;
 
 /**
- * Created by GeneratorFx on 2017-04-10.
+ * 友链实体类
+ * @author eumji
+ * @package com.eumji.zblog.vo
+ * @name Pager.java
+ * @date 2017/4/11
+ * @time 12:32
  */
 @Alias("partner")
 public class Partner implements Serializable {
@@ -12,13 +17,13 @@ public class Partner implements Serializable {
 
     private Integer id;
 
-    private String siteName;
+    private String siteName;    //友链名称
 
-    private String siteUrl;
+    private String siteUrl; //友链URL
 
-    private String siteDesc;
+    private String siteDesc; //友链描述
 
-    private Integer sort;
+    private Integer sort;  //排序
 
     public Integer getId() {
         return id;

@@ -6,22 +6,38 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Created by GeneratorFx on 2017-04-11.
+ * 文章实体
+ * @author eumji
+ * @package com.eumji.zblog.vo
+ * @name Article.java
+ * @date 2017/4/12
+ * @time 12:34
  */
 @Alias("article")
 public class Article implements Serializable {
 
-    private Integer id;
-    private Integer categoryId;
-    private String categoryName;
-    private String title;
-    private String content;
-    private String description;
-    private Integer status;
-    private String author;
-    private Date createTime;
-    private Date updateTime;
-    private Integer showCount;
+    private Integer id;  //文章id
+
+    private Integer categoryId; //文章分类id
+
+    private String categoryName; //分类名称
+
+    private String title;   //标题
+
+    private String content;  //内容
+
+    private String description; //描述
+
+    private Integer status;  //状态
+
+    private String author; //作者
+
+    private Date createTime;    //创建时间
+
+    private Date updateTime;    //更新时间
+
+    private Integer showCount;  //浏览数
+
     public Integer getId() {
         return id;
     }

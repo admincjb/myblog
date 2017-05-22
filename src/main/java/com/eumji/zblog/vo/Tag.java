@@ -5,6 +5,7 @@ import org.apache.ibatis.type.Alias;
 import java.io.Serializable;
 
 /**
+ *标签信息实体
  * FILE: com.eumji.zblog.vo.Tag.java
  * MOTTO:  不积跬步无以至千里,不积小流无以至千里
  * AUTHOR: EumJi
@@ -15,8 +16,10 @@ import java.io.Serializable;
 public class Tag implements Serializable {
 
     private Integer id;
-    private String tagName;
-    private String aliasName;
+
+    private String tagName; //标签名
+
+    private String aliasName;  //别名
 
     public Integer getId() {
         return id;

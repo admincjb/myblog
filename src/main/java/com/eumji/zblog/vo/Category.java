@@ -5,15 +5,24 @@ import org.apache.ibatis.type.Alias;
 import java.io.Serializable;
 
 /**
-* Created by GeneratorFx on 2017-04-11.
-*/
+ * 分类实体
+ * @author eumji
+ * @package com.eumji.zblog.vo
+ * @name Category.java
+ * @date 2017/4/12
+ * @time 12:34
+ */
 @Alias("category")
 public class Category implements Serializable {
 
 private Integer id;
-private String categoryName;
-private String aliasName;
+
+private String categoryName; //分类名称
+
+private String aliasName;  //分类别名
+
 private Integer sort;
+
 public Integer getId() {
 return id;
 }
