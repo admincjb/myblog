@@ -4,6 +4,7 @@ import com.eumji.zblog.service.ArticleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -22,9 +23,14 @@ import java.net.URL;
  */
 @Component
 public class BaiduTask {
+
     private Logger logger = LoggerFactory.getLogger(this.getClass());
-    public static final String POST_URL = "http://data.zz.baidu.com/urls?site=www.eumji025.com&token=hHzO6TjfJBf4KA53";
-    public static final String BASE_URL = "http://www.eumji025.com";
+
+    @Value("${baidu.task.postUrl}")
+    public String POST_URL;
+
+    @Value("${baidu.task.baseUrl}")
+    public String BASE_URL;
     @Autowired
     private ArticleService articleService;
 

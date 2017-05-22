@@ -4,6 +4,13 @@ qiniu:
   secretKey: feAWGHn_UmhGU2ckkHd9F2q2qFpC7lPqlemvEOCH
   bucketName: eumji025
   basePath: http://of8rkrh1w.bkt.clouddn.com/
+
+## 百度推送
+baidu:
+  task:
+    postUrl: http://data.zz.baidu.com/urls?site=www.eumji025.com&token=hHzO6TjfJBf4KA53
+    baseUrl: http://www.eumji025.com
+
 #数据库连接配置
 spring:
   datasource:
@@ -38,6 +45,8 @@ logging:
 server:
   session-timeout : 3600
   port: 8080
+
+
 
 
 
