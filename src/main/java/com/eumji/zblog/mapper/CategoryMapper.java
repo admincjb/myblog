@@ -1,7 +1,6 @@
 package com.eumji.zblog.mapper;
 
 
-import com.eumji.zblog.vo.ArticleCustom;
 import com.eumji.zblog.vo.Category;
 import com.eumji.zblog.vo.CategoryCustom;
 import com.eumji.zblog.vo.Pager;
@@ -11,6 +10,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
+ * 分类的mapper接口
 * Created by GeneratorFx on 2017-04-11.
 */
 @Mapper

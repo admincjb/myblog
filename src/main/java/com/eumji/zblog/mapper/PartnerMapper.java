@@ -13,10 +13,16 @@ import java.util.List;
 @Mapper
 public interface PartnerMapper {
 
+    /**
+     * 查询所以的友情链接
+     * @return
+     */
+    List<Partner> findAll();
 
-List<Partner> findAll();
-
-
+    /**
+     * 添加一个友情链接
+     * @param partner
+     */
     void savePartner(Partner partner);
 
     /**
@@ -27,11 +33,29 @@ List<Partner> findAll();
      */
     List<Partner> loadPartner(@Param("pager")Pager pager, @Param("param") String param);
 
+    /**
+     * 通过id获取友情链接
+     * @param id
+     * @return
+     */
     Partner getPartnerById(Integer id);
 
+    /**
+     * 删除一条友链
+     * @param id
+     */
     void deletePartner(Integer id);
 
+    /**
+     * 更新友链
+     * @param partner
+     */
     void updatePartner(Partner partner);
 
+    /**
+     * 获取友链数量
+     * @param pager
+     * @return
+     */
     int initPage(Pager pager);
 }

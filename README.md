@@ -138,6 +138,14 @@
 
 3.修改百度推送的方式
 
+## 2017年5月25日
+
+1.用户相关的设计
+
+2.优化部分bug
+
+PS： 作者前两天折腾linux了 哈哈哈
+
 ## License
 
 The eumji-blog is released under version 2.0 of the [Apache License](http://www.apache.org/licenses/LICENSE-2.0).

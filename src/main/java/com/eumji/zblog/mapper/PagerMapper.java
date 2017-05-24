@@ -3,9 +3,10 @@ package com.eumji.zblog.mapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * @author Do
+ * 分页的mapper
+ * @author EumJi
  * @package com.eumji.zblog.mapper
- * @name PagerMapper
+ * @name PagerMapper.java
  * @date 2017/4/13
  * @time 9:07
  */

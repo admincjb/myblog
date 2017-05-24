@@ -22,5 +22,9 @@ public interface UserMapper {
      */
     User getUser(@Param("username") String username);
 
+    /**
+     * 获取所有的用户
+     * @return
+     */
     List<User> allUser();
 }
