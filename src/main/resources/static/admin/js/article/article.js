@@ -1,4 +1,8 @@
 var pager = {page:1,start:0,limit:10};
+
+/**
+ * 初始化数据
+ */
 $(function() {
     $("#article-manage-li").addClass("active");
     $("#article-list-li").addClass("active");
@@ -15,27 +19,32 @@ $(function() {
             $("#total-num").text(data.totalCount);
             $("#total-page").text(data.totalPageNum);
             $("#current-page").text(data.page);
-            //初始化分页
-            $.jqPaginator('#pagination', {
-                totalPages: data.totalPageNum,
-                visiblePages: 5,
-                currentPage: data.page,
-                prev: '<li class="prev"><a href="javascript:;">Previous</a></li>',
-                next: '<li class="next"><a href="javascript:;">Next</a></li>',
-                page: '<li class="page"><a href="javascript:;">{{page}}</a></li>',
-                onPageChange: function (num, type) {
-                    // 加载管理员列表
-                    $("#current-page").text(num);
-                    pager.page = num;
-                    loadArticleList();
-                    $(".chosen-select").chosen({
-                        max_selected_options: 5,
-                        no_results_text: "没有找到",
-                        allow_single_deselect: true
-                    });
-                    $(".chosen-select").trigger("liszt:updated");
-                }
+            //初始化分页   2017年5月25日 update by eumji 由于插件在没有数据的时候会报错，所以添加一层判断
+            if (pager.totalCount > 0 ) {
+                $.jqPaginator('#pagination', {
+                    totalPages: data.totalPageNum,
+                    visiblePages: 5,
+                    currentPage: data.page,
+                    prev: '<li class="prev"><a href="javascript:;">Previous</a></li>',
+                    next: '<li class="next"><a href="javascript:;">Next</a></li>',
+                    page: '<li class="page"><a href="javascript:;">{{page}}</a></li>',
+                    onPageChange: function (num, type) {
+                        // 加载管理员列表
+                        $("#current-page").text(num);
+                        pager.page = num;
+                        loadArticleList();
+                    }
+                });
+            }else {
+                loadArticleList();
+            }
+
+            $(".chosen-select").chosen({
+                max_selected_options: 5,
+                no_results_text: "没有找到",
+                allow_single_deselect: true
             });
+            $(".chosen-select").trigger("liszt:updated");
         }
     });
 

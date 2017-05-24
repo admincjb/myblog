@@ -9,7 +9,10 @@ $(function () {
                 success: function (data){
                     pager = data;
                     $("#pagination").data("type","article");
-                    initPage(null);
+                    // 2017年5月25日 update by eumji 由于插件在没有数据的时候会报错，所以添加一层判断
+                    if (pager.totalCount > 0){
+                        initPage(null);
+                    }
                 }
         });
 
@@ -36,6 +39,7 @@ function initPage(id) {
     $("#current-page").text(pager.page);
     $.jqPaginator('#pagination', {
         totalPages: pager.totalPageNum,
+        totalCounts: pager.totalCount,
         visiblePages: 5,
         currentPage: pager.page,
         prev: '<li class="prev"><a href="javascript:;">Previous</a></li>',
