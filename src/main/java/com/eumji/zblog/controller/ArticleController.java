@@ -23,24 +23,23 @@ import java.util.List;
 public class ArticleController {
 
     @Resource
-    private ArticleService articleService;
+    private ArticleService articleService;  //文章service
 
     @Resource
-    private PartnerService partnerService;
+    private PartnerService partnerService; //友情链接service
 
     @Resource
-    private CategoryService categoryService;
+    private CategoryService categoryService; //分类service
 
     @Resource
-    private TagService tagService;
+    private TagService tagService;  //标签service
 
-    @RequestMapping("/list/{id}")
-    @ResponseBody
-    public ResultInfo articleList(Pager pager){
-
-        return null;
-    }
-
+    /**
+     * 加载分页列表数据
+     * @param pager
+     * @param model
+     * @return
+     */
     @RequestMapping("/load")
     public String loadArticle(Pager<Article> pager, Model model){
         List<ArticleCustom> articleList = articleService.articleList(pager);
@@ -62,11 +61,17 @@ public class ArticleController {
     public String loadArticle(@PathVariable Integer articleId, Model model){
         List<Partner> partnerList = partnerService.findAll();
         List<CategoryCustom> categoryList = categoryService.initCategoryList();
+        //上一篇
         Article lastArticle = articleService.getLastArticle(articleId);
+        //下一篇
         Article nextArticle = articleService.getNextArticle(articleId);
+        //增加浏览量
         articleService.addArticleCount(articleId);
+        //获取文章总数量
         int articleCount = articleService.getArticleCount();
+        //标签总数量
         int tagCount = tagService.getTagCount();
+        //当前文章的所有信息
         ArticleCustom articleCustom = articleService.getArticleCustomById(articleId);
         model.addAttribute("lastArticle",lastArticle);
         model.addAttribute("nextArticle",nextArticle);
@@ -79,12 +84,17 @@ public class ArticleController {
         return "article";
     }
 
+    /**
+     * 全局搜索
+     * @param keyword 关键字
+     * @param model
+     * @return
+     */
     @RequestMapping("/content/search")
     public String search(String keyword,Model model){
         List<Article> articleList = articleService.getArticleListByKeywords(keyword);
         model.addAttribute("articleList",articleList);
         return "blog/part/search-info";
     }
-
 
 }

@@ -4,7 +4,7 @@ import com.eumji.zblog.vo.LogInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * @author Do
+ * @author eumji
  * @package com.eumji.zblog.mapper
  * @name LogDao
  * @date 2017/4/10

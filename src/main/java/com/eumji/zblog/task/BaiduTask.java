@@ -15,6 +15,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
+ * 百度推送的工具类
+ * 2017年5月22日 将百度推送硬编码改为读配置文件
  * FILE: com.eumji.zblog.task.BaiduTask.java
  * MOTTO:  不积跬步无以至千里,不积小流无以至千里
  * AUTHOR: EumJi
@@ -34,6 +36,11 @@ public class BaiduTask {
     @Autowired
     private ArticleService articleService;
 
+    /**
+     * 初始化HttpURLConnection
+     * @return
+     * @throws IOException
+     */
     private HttpURLConnection initConnect() throws IOException {
         HttpURLConnection conn = (HttpURLConnection) new URL(POST_URL).openConnection();
         conn.setRequestProperty("Host","data.zz.baidu.com");
@@ -44,7 +51,12 @@ public class BaiduTask {
         conn.setDoOutput(true);
         return conn;
     }
-    @Scheduled(fixedDelay = 2000000)
+
+    /**
+     * 自动推送任务
+     * @throws IOException
+     */
+    @Scheduled(fixedDelay = 200000)
     public void postArticleUrl() throws IOException {
         String [] ids = articleService.getArticleId();
        writerUrl(initConnect(),ids);

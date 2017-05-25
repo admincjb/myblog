@@ -25,11 +25,10 @@ import java.util.List;
 public class PagerController {
 
     @Resource
-    private PagerService pagerService;
+    private PagerService pagerService;  //分页的service
     @Resource
-    private TagService tagService;
-    @Resource
-    CategoryService categoryService;
+    private TagService tagService;  //标签的service
+
     /**
      * 初始化文章分页信息
      * @return

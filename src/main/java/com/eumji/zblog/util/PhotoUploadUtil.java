@@ -15,6 +15,9 @@ import java.io.File;
 import java.util.Calendar;
 
 /**
+ * 使用七牛存储图片
+ *
+ * 2017年5月22日 修改硬编码 wei
  * FILE: com.eumji.zblog.util.PhotoUploadUtil.java
  * MOTTO:  不积跬步无以至千里,不积小流无以至千里
  * AUTHOR: EumJi

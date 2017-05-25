@@ -73,15 +73,44 @@ public interface ArticleMapper {
      */
     void addArticleCount(Integer articleId);
 
+    /**
+     * 十篇受欢迎的文章
+     * @return
+     */
     List<ArticleCustom> popularArticle();
 
+    /**
+     * 获取文章id数组
+     * @return
+     */
     String[] getArticleId();
 
+    /**
+     * 通过关键字获取文章
+     * @param keyword
+     * @return
+     */
     List<Article> getArticleListByKeywords(@Param("keyword") String keyword);
 
+    /**
+     * 获取时间归档信息
+     * @return
+     */
     List<Map> articleArchiveList();
 
+    /**
+     * 通过时间归档查询文章
+     * @param pager
+     * @param createTime
+     * @return
+     */
     List<ArticleCustom> loadArticleByArchive(@Param("pager") Pager pager, @Param("createTime") String createTime);
 
+    /**
+     * 更新分类id
+     * 设置为9999
+     * 用于删除分类并且存在文章的时候
+     * @param categoryId
+     */
     void updateCategoryId(Integer categoryId);
 }

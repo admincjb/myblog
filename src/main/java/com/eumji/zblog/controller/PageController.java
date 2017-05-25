@@ -27,17 +27,24 @@ import java.util.Map;
 public class  PageController {
 
     @Resource
-    private PartnerService partnerService;
+    private PartnerService partnerService;  //友情链接的service
 
     @Resource
-    private ArticleService articleService;
+    private ArticleService articleService; //分钟信息的service
+
     @Resource
-    private CategoryService categoryService;
+    private CategoryService categoryService;  //分类的service
+
     @Resource
-    private TagService tagService;
+    private TagService tagService;  //标签的service
 
     /**
      * 首页
+     * 初始化信息
+     * 1.标签，分类，文章数量
+     * 2.友情链接
+     * 3.分类列表 -> 用于文章分类显示
+     * 4.时间归档列表
      * @param model
      * @return
      */
@@ -67,6 +74,10 @@ public class  PageController {
         return "archives";
     }
 
+    /**
+     * 跳转到登录页面
+     * @return
+     */
     @RequestMapping("/login")
     public String loginPage(){
         return "login";
@@ -81,6 +92,11 @@ public class  PageController {
     }
 
 
+    /**
+     * 关于我跳转
+     * @param model
+     * @return
+     */
     @RequestMapping("/about/me")
     public String aboutMe(Model model){
         List<Partner> partnerList = partnerService.findAll();
