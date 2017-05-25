@@ -156,6 +156,16 @@ LOCK TABLES `partner` WRITE;
 UNLOCK TABLES;
 
 --
+-- Dumping data for table `partner`
+--
+
+LOCK TABLES `partner` WRITE;
+/*!40000 ALTER TABLE `partner` DISABLE KEYS */;
+INSERT INTO `partner` VALUES (1,'eumji | csdn','http://blog.csdn.net/jsu_9207','EumJi的CSDN博客',1),(2,'eumji | github','http://github.com/eumji025','EumJi的GitHub',1);
+/*!40000 ALTER TABLE `partner` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tag`
 --
 
