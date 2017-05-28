@@ -3053,8 +3053,8 @@ ol.unstyled {
 }
 /* FOOTER */
 .footer {
-  background: none repeat scroll 0 0 white;
-  border-top: 1px solid #e7eaec;
+  /*background: none repeat scroll 0 0 white;
+  border-top: 1px solid #e7eaec;*/
   bottom: 0;
   left: 0;
   padding: 10px 20px;
@@ -3078,8 +3078,8 @@ ol.unstyled {
   right: 0;
   z-index: 1000;
   padding: 10px 20px;
-  background: white;
-  border-top: 1px solid #e7eaec;
+/*  background: white;
+  border-top: 1px solid #e7eaec;*/
   margin-left: 220px;
 }
 body.mini-navbar .footer.fixed,

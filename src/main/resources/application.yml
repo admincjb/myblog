@@ -28,7 +28,7 @@ spring:
     converters:
       preferred-json-mapper: jackson
   application:
-    name: zblog
+    name: eumji-blog
 
 #mynatis配置
 mybatis:
