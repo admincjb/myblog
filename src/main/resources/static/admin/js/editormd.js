@@ -4002,11 +4002,11 @@
         if (!editormd.isIE8) 
         {
             if (settings.flowChart) {
-                div.find(".flowchart").flowChart(); 
+                /*div.find(".flowchart").flowChart(); */
             }
 
             if (settings.sequenceDiagram) {
-                div.find(".sequence-diagram").sequenceDiagram({theme: "simple"});
+                /*div.find(".sequence-diagram").sequenceDiagram({theme: "simple"});*/
             }
         }
 

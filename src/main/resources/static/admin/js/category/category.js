@@ -12,19 +12,21 @@ $(function(){
             $("#total-num").text(data.totalCount);
             $("#total-page").text(data.totalPageNum);
             $("#current-page").text(data.page);
-            $.jqPaginator('#pagination', {
-                totalPages: data.totalPageNum,
-                visiblePages: 5,
-                currentPage: data.page,
-                prev: '<li class="prev"><a href="javascript:;">Previous</a></li>',
-                next: '<li class="next"><a href="javascript:;">Next</a></li>',
-                page: '<li class="page"><a href="javascript:;">{{page}}</a></li>',
-                onPageChange: function (num, type) {
-                    // 加载分类列表
-                    $("#current-page").text(num);
-                    loadCategoryList();
-                }
-            });
+            if (data.totalCount > 0) {
+                $.jqPaginator('#pagination', {
+                    totalPages: data.totalPageNum,
+                    visiblePages: 5,
+                    currentPage: data.page,
+                    prev: '<li class="prev"><a href="javascript:;">Previous</a></li>',
+                    next: '<li class="next"><a href="javascript:;">Next</a></li>',
+                    page: '<li class="page"><a href="javascript:;">{{page}}</a></li>',
+                    onPageChange: function (num, type) {
+                        // 加载分类列表
+                        $("#current-page").text(num);
+                        loadCategoryList();
+                    }
+                });
+            }
         }
     });
 
