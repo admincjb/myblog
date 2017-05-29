@@ -81,7 +81,7 @@ public class ArticleController {
         model.addAttribute("tagCount",tagCount);
         model.addAttribute("categoryList",categoryList);
         model.addAttribute("partnerList",partnerList);
-        return "article";
+        return "blog/article";
     }
 
     /**

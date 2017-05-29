@@ -79,11 +79,6 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryMapper.getCategoryList();
     }
 
-    @Override
-    public void ArticleCatePage(Pager pager, int categoryId) {
-        int count = categoryMapper.ArticleCatePage(categoryId);
-        pager.setTotalCount(count);
-    }
 
     @Override
     public List<ArticleCustom> loadArticleByArchive(String createTime, Pager pager) {

@@ -61,7 +61,7 @@ public class  PageController {
         model.addAttribute("categoryList",categoryList);
         model.addAttribute("partnerList",partnerList);
         model.addAttribute("archiveList",archiveList);
-        return "index";
+        return "blog/index";
     }
 
     /**
@@ -71,7 +71,7 @@ public class  PageController {
     @RequestMapping("/archives")
     @Deprecated
     public String archivesPage(){
-        return "archives";
+        return "blog/archives";
     }
 
     /**
@@ -108,7 +108,7 @@ public class  PageController {
         model.addAttribute("tagCount",tagCount);
         model.addAttribute("categoryList",categoryList);
         model.addAttribute("partnerList",partnerList);
-        return "aboutMe";
+        return "blog/aboutMe";
     }
 
     @RequestMapping("/popular")
@@ -125,11 +125,11 @@ public class  PageController {
         model.addAttribute("articleList",articleList);
         model.addAttribute("categoryList",categoryList);
         model.addAttribute("partnerList",partnerList);
-        return "popular";
+        return "blog/popular";
     }
 
     @RequestMapping("/thymeleaf")
     public String thymeleafPage(){
-        return "thymeleaf";
+        return "blog/thymeleaf";
     }
 }
