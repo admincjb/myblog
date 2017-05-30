@@ -32,13 +32,11 @@ $(function() {
                         // 加载管理员列表
                         $("#current-page").text(num);
                         pager.page = num;
-                        loadArticleList();
+
                     }
                 });
-            }else {
-                loadArticleList();
             }
-
+            loadArticleList();
             $(".chosen-select").chosen({
                 max_selected_options: 5,
                 no_results_text: "没有找到",

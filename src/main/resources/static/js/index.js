@@ -110,7 +110,7 @@ $("#main-article").on('click','.article-tag-link',function () {
 $(".archive-list-link").on('click',function () {
     var createTime = $(this).data("id");
     var count  = $(this).next().text();
-    pager.totalCount = count;
+    pager.totalCount = parseInt(count);
     pager.totalPageNum = Math.floor(count/pager.limit)+1;
     pager.page = 1;
     $("#pagination").data("type","createTime");

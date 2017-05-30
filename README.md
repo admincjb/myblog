@@ -1,6 +1,6 @@
 # eumji-blog
 
-[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
+！[[License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 
 这个项目是使用spring boot + thymeleaf 开发个人博客项目.
@@ -9,7 +9,7 @@
 
 演示站: http://www.eumji025.com
 
-#用户部分说明
+# 用户部分说明
 
 用户修改部分暂时还没有做，作者近期毕业较忙，请耐心等侯或者自己开发。
 
@@ -156,6 +156,12 @@
 1.解决总数为0时分页的bug
 
 2.添加一些基本的数据
+
+## 2017年5月29日
+
+尝试spring boot多模块出现了点问题。本来想拆分成display和management和common三个模块。
+无奈怎么打包都好像有点问题。以后再试！！！
+
 
 
 PS： 作者前两天折腾linux了 哈哈哈
