@@ -1,5 +1,6 @@
 package com.eumji.zblog.config;
 
+import com.eumji.zblog.auth.CustomAuthenticationProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;

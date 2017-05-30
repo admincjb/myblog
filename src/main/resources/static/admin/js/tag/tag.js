@@ -24,10 +24,11 @@ $(function() {
                     onPageChange: function (num, type) {
                         // 加载管理员列表
                         $("#current-page").text(num);
-                        loadTagList();
+
                     }
                 });
             }
+            loadTagList();
         }
     });
 });
