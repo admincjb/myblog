@@ -11,4 +11,9 @@
     <select id="allUser" resultType="user">
         select * from user
     </select>
+
+    <select id="getUserInfo" resultType="userInfo">
+
+        select * from user_info
+    </select>
 </mapper>

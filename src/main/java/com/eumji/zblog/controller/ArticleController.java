@@ -1,9 +1,6 @@
 package com.eumji.zblog.controller;
 
-import com.eumji.zblog.service.ArticleService;
-import com.eumji.zblog.service.CategoryService;
-import com.eumji.zblog.service.PartnerService;
-import com.eumji.zblog.service.TagService;
+import com.eumji.zblog.service.*;
 import com.eumji.zblog.util.ResultInfo;
 import com.eumji.zblog.vo.*;
 import org.springframework.stereotype.Controller;
@@ -34,6 +31,8 @@ public class ArticleController {
     @Resource
     private TagService tagService;  //标签service
 
+    @Resource
+    private UserService userService;
     /**
      * 加载分页列表数据
      * @param pager
@@ -73,6 +72,9 @@ public class ArticleController {
         int tagCount = tagService.getTagCount();
         //当前文章的所有信息
         ArticleCustom articleCustom = articleService.getArticleCustomById(articleId);
+
+        UserInfo userInfo = userService.getUserInfo();
+
         model.addAttribute("lastArticle",lastArticle);
         model.addAttribute("nextArticle",nextArticle);
         model.addAttribute("article",articleCustom);
@@ -81,6 +83,7 @@ public class ArticleController {
         model.addAttribute("tagCount",tagCount);
         model.addAttribute("categoryList",categoryList);
         model.addAttribute("partnerList",partnerList);
+        model.addAttribute("userInfo",userInfo);
         return "blog/article";
     }
 

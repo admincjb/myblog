@@ -1,12 +1,10 @@
 package com.eumji.zblog.controller;
 
-import com.eumji.zblog.service.ArticleService;
-import com.eumji.zblog.service.CategoryService;
-import com.eumji.zblog.service.PartnerService;
-import com.eumji.zblog.service.TagService;
+import com.eumji.zblog.service.*;
 import com.eumji.zblog.vo.ArticleCustom;
 import com.eumji.zblog.vo.CategoryCustom;
 import com.eumji.zblog.vo.Partner;
+import com.eumji.zblog.vo.UserInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +36,9 @@ public class  PageController {
     @Resource
     private TagService tagService;  //标签的service
 
+    @Resource
+    private UserService userService;
+
     /**
      * 首页
      * 初始化信息
@@ -52,6 +53,7 @@ public class  PageController {
     public String home(Model model){
         List<Partner> partnerList = partnerService.findAll();
         List<CategoryCustom> categoryList = categoryService.initCategoryList();
+        UserInfo userInfo = userService.getUserInfo();
         int articleCount = articleService.getArticleCount();
         List<Map> archiveList = articleService.articleArchiveList();
         int tagCount = tagService.getTagCount();
@@ -61,6 +63,7 @@ public class  PageController {
         model.addAttribute("categoryList",categoryList);
         model.addAttribute("partnerList",partnerList);
         model.addAttribute("archiveList",archiveList);
+        model.addAttribute("userInfo",userInfo);
         return "blog/index";
     }
 

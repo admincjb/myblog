@@ -1,6 +1,7 @@
 package com.eumji.zblog.mapper;
 
 import com.eumji.zblog.vo.User;
+import com.eumji.zblog.vo.UserInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +28,6 @@ public interface UserMapper {
      * @return
      */
     List<User> allUser();
+
+    UserInfo getUserInfo();
 }

@@ -3,6 +3,7 @@ package com.eumji.zblog.service.impl;
 import com.eumji.zblog.mapper.UserMapper;
 import com.eumji.zblog.vo.User;
 import com.eumji.zblog.service.UserService;
+import com.eumji.zblog.vo.UserInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
@@ -21,6 +22,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User loadUserByUsername(String username) {
         return userMapper.getUser(username);
+    }
+
+    @Override
+    public UserInfo getUserInfo() {
+        return userMapper.getUserInfo();
     }
 }
 
