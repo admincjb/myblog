@@ -211,6 +211,46 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+
+
+--
+-- Table structure for table `user`
+--
+DROP TABLE IF EXISTS `user_info`;
+create table `user_info`
+(
+  username varchar(20) null,
+  avatar varchar(255) null,
+  nickname varchar(20) default 'EumJi' null comment '昵称',
+  phone char(11) null comment '电话号码',
+  email varchar(50) default 'eumji025@gmail.com' null comment '邮箱',
+  signature varchar(2000) null comment '个性签名',
+  address varchar(50) null comment '地址',
+  announcement varchar(2000) null comment '公告',
+  telegram varchar(20) default '18574406580' null comment 'telegram账号',
+  wechart varchar(20) default 'jo__18' null comment '微信账号',
+  constraint user_info_username_uindex
+  unique (username)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+  comment '用户信息表'
+;
+
+--
+-- Dumping data for table `tag`
+--
+
+LOCK TABLES `user_info` WRITE;
+/*!40000 ALTER TABLE `user_info` DISABLE KEYS */;
+INSERT INTO `user_info` (username, avatar, nickname, phone, email, signature, address, announcement, telegram, wechart) VALUES ('eumji', 'http://www.eumji025.com/image/avatar.jpg', 'EumJi', '18574406580', 'eumji025@gmail.com', '有些东西，看似离我们很近，但却很远，努力向它靠近，也许能触及到，也许触及不到，顺其自然，平常心对待，其他的都交给时间，或迟或早，都会有一个结果。', '中国 - 张家界', '作者原本单纯的做一个个人博客，所以很多的细节比较随意。<br>
+                    目前项目已经托管在github和oschina上，准备长期去优化和维护。<br>
+                    如果您有什么好的建议或者想法都可以通过邮件或者issue反馈给我，我会尽量及时的去处理。<br>
+                    mail： eumji025@gmail.com<br>
+                    github: https://github.com/eumji025/EumJi-blog/issues/ <br>
+                    oschina: https://git.oschina.net/eumji025/zblog/issues<br>', '19574406580', 'jo__18');
+/*!40000 ALTER TABLE `user_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 --
 -- Dumping data for table `user`
 --
