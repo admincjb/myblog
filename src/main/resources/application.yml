@@ -20,13 +20,14 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
   thymeleaf:
     mode: HTML5
-
   #字符集和json格式工具
   http:
     encoding:
       charset: utf-8
     converters:
       preferred-json-mapper: jackson
+    multipart:
+      max-file-size: 10MB
   application:
     name: eumji-blog
 
