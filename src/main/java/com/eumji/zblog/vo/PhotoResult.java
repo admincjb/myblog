@@ -14,6 +14,15 @@ public class PhotoResult {
     private String url;     //图片url
     private String message; //错误信息
 
+    public PhotoResult() {
+    }
+
+    public PhotoResult(int success, String url, String message) {
+        this.success = success;
+        this.url = url;
+        this.message = message;
+    }
+
     public int getSuccess() {
         return success;
     }
