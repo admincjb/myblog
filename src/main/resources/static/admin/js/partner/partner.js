@@ -25,11 +25,12 @@ $(function() {
                     page: '<li class="page"><a href="javascript:;">{{page}}</a></li>',
                     onPageChange: function (num, type) {
                         $("#current-page").text(num);
-
+                        loadPartnerList();
                     }
                 });
+            }else {
+                loadPartnerList();
             }
-            loadPartnerList();
         }
     });
 });

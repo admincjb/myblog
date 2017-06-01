@@ -23,11 +23,12 @@ $(function(){
                     onPageChange: function (num, type) {
                         // 加载分类列表
                         $("#current-page").text(num);
-
+                        loadCategoryList();
                     }
                 });
+            }else {
+                loadCategoryList();
             }
-            loadCategoryList();
         }
     });
 
