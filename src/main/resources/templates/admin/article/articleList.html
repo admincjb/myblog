@@ -104,14 +104,8 @@
     </div>
 
 
-    <!-- 新增页面 -->
-    <div class="modal inmodal" id="addArticleModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div id="addArticleContent" class="modal-body">
-
-            </div>
-        </div>
-    </div>
+    <!-- 修改用户信息 -->
+    <div class="modal inmodal" id="addArticleModal" tabindex="-1" role="dialog" aria-hidden="true" th:replace="admin/partial/module-userinfo :: update-modal"></div>
 
     <div class="container" id="crop-avatar" th:replace="~{admin/partial/avatar :: avatar}"></div>
 

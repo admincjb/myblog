@@ -1,5 +1,7 @@
 package com.eumji.zblog.util;
 
+import com.eumji.zblog.vo.UserInfo;
+
 /**
  * 获取错误信息的工具类
  * FILE: com.eumji.zblog.util.UserInfoUtil.java
@@ -56,6 +58,13 @@ public class ResultInfoFactory {
      */
     public static ResultInfo getSuccessResultInfo(){
         return getSuccessResultInfo("操作成功！！！");
+    }
+
+
+    public static ResultInfo getSuccessData(UserInfo userInfo) {
+        ResultInfo successResultInfo = getSuccessResultInfo();
+        successResultInfo.setObject(userInfo);
+        return successResultInfo;
     }
 
 

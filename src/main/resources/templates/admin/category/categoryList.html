@@ -105,6 +105,12 @@
     </div>
 </div>
 
+<!-- 修改用户信息 -->
+<div class="modal inmodal" id="addArticleModal" tabindex="-1" role="dialog" aria-hidden="true" th:replace="admin/partial/module-userinfo :: update-modal"></div>
+
+<div class="container" id="crop-avatar" th:replace="~{admin/partial/avatar :: avatar}"></div>
+
+
 
 <!-- Mainly scripts -->
 <script src="/js/jquery.min.js"></script>
@@ -117,6 +123,10 @@
 <script src="/admin/js/hplus.js"></script>
 <script type="text/javascript" src="/admin/js/flavr/flavr/js/flavr.min.js"></script>
 <script type="text/javascript" src="/admin/js/flavr/base.js"></script>
+
+<script src="/admin/js/userinfo.js"></script>
+<script src="/admin/js/cropper.min.js"></script>
+<script src="/admin/js/upload-image.js"></script>
 
 </body>
 

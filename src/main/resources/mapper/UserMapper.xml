@@ -20,4 +20,14 @@
     <update id="updateAvatar">
         update user_info set avatar = #{url} where username = #{username}
     </update>
+
+
+    <update id="updatePassword">
+        update user set password = #{password} where username = #{username}
+    </update>
+
+    <update id="updateUserInfo">
+        update user_info set nickname = #{nickname},phone = #{phone},email = #{email},signature = #{signature},
+        address = #{address},wechart = #{wechart},telegram = #{telegram},announcement = #{announcement} where username = #{username}
+    </update>
 </mapper>

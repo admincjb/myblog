@@ -32,4 +32,8 @@ public interface UserMapper {
     UserInfo getUserInfo();
 
     void updateAvatar(@Param("url") String url, @Param("username") String username);
+
+    void updatePassword(User user);
+
+    void updateUserInfo(UserInfo userInfo);
 }
