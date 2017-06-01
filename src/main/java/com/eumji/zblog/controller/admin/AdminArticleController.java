@@ -42,8 +42,6 @@ public class AdminArticleController {
     @Resource
     private ArticleService articleService;
 
-    @Resource
-    private PhotoUploadUtil photoUploadUtil;
 
     //标签service
     @Resource
@@ -226,22 +224,5 @@ public class AdminArticleController {
         return ResultInfoFactory.getSuccessResultInfo();
     }
 
-    @RequestMapping("/imageUpload")
-    @ResponseBody
-    public PhotoResult imageUpload(@RequestParam(value = "editormd-image-file",required = true) MultipartFile file){
-        PhotoResult result = null;
-        //设置filename
-       // String filename = new Random().nextInt(10000)+file.getOriginalFilename();
-        try {
-            File files = new File(System.getProperty("java.io.tmpdir") + System.getProperty("file.separator")+file.getOriginalFilename());
-            file.transferTo(files);
 
-            result = photoUploadUtil.uploadPhoto(files.getAbsolutePath(), file.getOriginalFilename());
-            return result;
-        } catch (IOException e) {
-            e.printStackTrace();
-
-        }
-        return result;
-    }
 }

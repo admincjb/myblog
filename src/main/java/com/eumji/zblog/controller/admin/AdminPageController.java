@@ -1,13 +1,7 @@
 package com.eumji.zblog.controller.admin;
 
-import com.eumji.zblog.service.ArticleService;
-import com.eumji.zblog.service.CategoryService;
-import com.eumji.zblog.service.PartnerService;
-import com.eumji.zblog.service.TagService;
-import com.eumji.zblog.vo.Category;
-import com.eumji.zblog.vo.Pager;
-import com.eumji.zblog.vo.Partner;
-import com.eumji.zblog.vo.Tag;
+import com.eumji.zblog.service.*;
+import com.eumji.zblog.vo.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,6 +32,9 @@ public class AdminPageController {
 
     @Resource
     private PartnerService partnerService;
+
+    @Resource
+    private UserService userService;
     /**
      * 后台首页
      * @return
@@ -55,6 +52,8 @@ public class AdminPageController {
     public String articlePage(Model model){
         List<Tag> tagList = tagService.getTagList();
         List<Category> categoryList = categoryService.getCategoryList();
+        UserInfo userInfo = userService.getUserInfo();
+        model.addAttribute("userInfo",userInfo);
         model.addAttribute("tagList",tagList);
         model.addAttribute("categoryList",categoryList);
         return "admin/article/articleList";
@@ -62,7 +61,9 @@ public class AdminPageController {
 
 
     @RequestMapping("/tag/list")
-    public String labelPage(){
+    public String labelPage(Model model){
+        UserInfo userInfo = userService.getUserInfo();
+        model.addAttribute("userInfo",userInfo);
         return "admin/label/labelList";
     }
     /**
@@ -95,11 +96,30 @@ public class AdminPageController {
         return "admin/partner/partnerEdit";
     }
 
+    /**
+     * 跳转到分类列表页面
+     * @return 分类列表页面
+     */
+    @RequestMapping("/category/list")
+    public String categoryPage(Model model){
+        UserInfo userInfo = userService.getUserInfo();
+        model.addAttribute("userInfo",userInfo);
+        return "admin/category/categoryList";
+    }
+
+
     /**跳转到友链展示页面
      * @return
      */
     @RequestMapping("/partner/list")
-    public String partnerPage(){
+    public String partnerPage(Model model){
+        UserInfo userInfo = userService.getUserInfo();
+        model.addAttribute("userInfo",userInfo);
         return "admin/partner/partnerList";
+    }
+
+    @RequestMapping("/test")
+    public String testPage(){
+        return "admin/test";
     }
 }

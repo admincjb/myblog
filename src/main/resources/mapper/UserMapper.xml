@@ -16,4 +16,8 @@
 
         select * from user_info
     </select>
+
+    <update id="updateAvatar">
+        update user_info set avatar = #{url} where username = #{username}
+    </update>
 </mapper>

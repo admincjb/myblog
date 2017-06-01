@@ -13,4 +13,6 @@ public interface UserService {
     User loadUserByUsername(String username);
 
     UserInfo getUserInfo();
+
+    void updateAvatar(String url, String username);
 }

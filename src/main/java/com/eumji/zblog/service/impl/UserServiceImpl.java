@@ -7,7 +7,6 @@ import com.eumji.zblog.vo.UserInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * Created by GeneratorFx on 2017-04-11.
@@ -27,6 +26,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserInfo getUserInfo() {
         return userMapper.getUserInfo();
+    }
+
+    @Override
+    public void updateAvatar(String url, String username) {
+        userMapper.updateAvatar(url,username);
     }
 }
 

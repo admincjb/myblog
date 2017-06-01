@@ -31,14 +31,6 @@ public class AdminCategoryController {
     @Resource
     private CategoryService categoryService;
 
-    /**
-     * 跳转到分类列表页面
-     * @return 分类列表页面
-     */
-    @RequestMapping("/list")
-    public String categoryPage(){
-        return "admin/category/categoryList";
-    }
 
     /**
      * 初始化分页信息 获取totalcount
