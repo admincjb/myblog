@@ -75,4 +75,8 @@ public interface TagMapper {
      * @param tagId
      */
     int articleTagPage(int tagId);
+
+    void deleteTagById(int id);
+
+    void deleteArticleTagById(int id);
 }

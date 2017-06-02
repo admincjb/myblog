@@ -64,18 +64,19 @@ $("#tag-search").on('click',function () {
 
 // 删除
 $("#dataList").on('click','.tag-delete',function () {
+    var id = $(this).parent().data("id");
     new $.flavr({
         content: '确定要删除吗?',
         buttons: {
             primary: {
                 text: '确定', style: 'primary', action: function () {
                     $.ajax({
-                        url : '/admin/tag/delete/'+$(this).parent().data("id"),
+                        url : '/admin/tag/delete/'+id,
                         method: "GET",
                         success  : function(data) {
                             if(data.resultCode == 'success'){
                                 autoCloseAlert(data.errorInfo,1000);
-                                window.href.location = "/admin/tag/list";
+                                window.location.href = "/admin/tag/list";
                             }else{
                                 autoCloseAlert(data.errorInfo,1000);
                             }

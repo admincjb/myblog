@@ -113,4 +113,5 @@ public interface ArticleMapper {
      * @param categoryId
      */
     void updateCategoryId(Integer categoryId);
+
 }

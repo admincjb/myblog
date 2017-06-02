@@ -86,4 +86,10 @@ public class TagServiceImpl implements TagService {
         int count =  tagMapper.articleTagPage(tagId);
         pager.setTotalCount(count);
     }
+
+    @Override
+    public void deleteTagById(int id) {
+        tagMapper.deleteTagById(id);
+        tagMapper.deleteArticleTagById(id);
+    }
 }

@@ -85,4 +85,12 @@ public class AdminTagController {
         tagService.updateTag(tag);
         return ResultInfoFactory.getSuccessResultInfo();
     }
+
+
+    @RequestMapping("/delete/{id}")
+    @ResponseBody
+    public ResultInfo deleteTag(@PathVariable int id){
+        tagService.deleteTagById(id);
+        return ResultInfoFactory.getSuccessResultInfo();
+    }
 }

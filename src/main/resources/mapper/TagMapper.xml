@@ -48,4 +48,12 @@
     <select id="articleTagPage" resultType="int">
        select count(DISTINCT article.id) from articletag join article on articleId = article.id and article.status = 1 where tagId = #{tagId}
     </select>
+
+    <delete id="deleteTagById">
+        delete from tag  where id = #{id}
+    </delete>
+
+    <delete id="deleteArticleTagById">
+        delete from articletag where tagId = #{id}
+    </delete>
 </mapper>

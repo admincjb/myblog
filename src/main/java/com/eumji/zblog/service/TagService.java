@@ -44,4 +44,10 @@ public interface TagService {
      * @param tagId
      */
     void ArticleTagPage(Pager pager, int tagId);
+
+    /**
+     * 根据id删除标签
+     * @param id
+     */
+    void deleteTagById(int id);
 }
