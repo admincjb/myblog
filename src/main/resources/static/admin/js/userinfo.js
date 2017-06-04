@@ -110,11 +110,11 @@ function saveInfo() {
         method: "POST",
         data: data,
         success: function (data) {
-            if (data.success == 'success'){
-                autoCloseAlert(data.message,1000);
+            if (data.resultCode == 'success'){
+                autoCloseAlert(data.errorInfo,1000);
                 cancelSaveInfo();
             }
-            autoCloseAlert(data.message,1000);
+            autoCloseAlert(data.errorInfo,1000);
             return false;
         }
     });

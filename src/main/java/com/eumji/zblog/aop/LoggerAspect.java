@@ -20,7 +20,8 @@ import java.util.Arrays;
 import java.util.Date;
 
 /**
- * @author Do
+ * 日志切入类
+ * @author EumJi
  * @package com.eumji.zblog.config
  * @name LoggerAspect
  * @date 2017/4/10
@@ -37,6 +38,12 @@ public class LoggerAspect {
     public void exceptionLog(){}
 
 
+    /**
+     * 异常切入方法
+     * 记录异常到数据库
+     * @param joinPoint
+     * @param e
+     */
     @AfterThrowing(pointcut = "exceptionLog()",throwing = "e")
     public void afterThrowing(JoinPoint joinPoint,Throwable e){
         LogInfo log = new LogInfo();
