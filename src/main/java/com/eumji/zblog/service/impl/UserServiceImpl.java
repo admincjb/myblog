@@ -6,7 +6,12 @@ import com.eumji.zblog.service.UserService;
 import com.eumji.zblog.vo.UserInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by GeneratorFx on 2017-04-11.
@@ -41,6 +46,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUserInfo(UserInfo userInfo) {
         userMapper.updateUserInfo(userInfo);
+    }
+
+    @Override
+    public User getCurrentUser() {
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        HttpSession session = request.getSession();
+        return (User) session.getAttribute("user");
     }
 }
 

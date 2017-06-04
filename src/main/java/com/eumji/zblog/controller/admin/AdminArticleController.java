@@ -3,7 +3,7 @@ package com.eumji.zblog.controller.admin;
 import com.eumji.zblog.service.ArticleService;
 import com.eumji.zblog.service.CategoryService;
 import com.eumji.zblog.service.TagService;
-import com.eumji.zblog.util.PhotoUploadUtil;
+import com.eumji.zblog.service.UserService;
 import com.eumji.zblog.util.ResultInfo;
 import com.eumji.zblog.util.ResultInfoFactory;
 import com.eumji.zblog.vo.*;
@@ -13,18 +13,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import java.io.File;
-import java.io.IOException;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 /**
  * 后台管理 文章controller
@@ -42,7 +37,6 @@ public class AdminArticleController {
     @Resource
     private ArticleService articleService;
 
-
     //标签service
     @Resource
     private TagService tagService;
@@ -51,6 +45,8 @@ public class AdminArticleController {
     @Resource
     private CategoryService categoryService;
 
+    @Resource
+    private UserService userService;
     /**
      * 初始化文章分页信息
      * @param pager
@@ -116,7 +112,7 @@ public class AdminArticleController {
 
             articleService.updateStatue(id, status);
         } catch (Exception e) {
-            log.error(e.toString());
+            log.error(e.getMessage());
             return ResultInfoFactory.getErrorResultInfo("更新状态失败,请稍后再尝试");
         }
         return ResultInfoFactory.getSuccessResultInfo();
@@ -144,15 +140,17 @@ public class AdminArticleController {
      */
     @RequestMapping("/save")
     @ResponseBody
-    public ResultInfo SaveArticle(Article article,int[] tags){
+    public ResultInfo saveArticle(Article article, int[] tags){
         try {
             //解码文章内容防止出现部分特殊字符串被转义
             article.setDescription(URLDecoder.decode(article.getDescription(),"UTF-8"));
             article.setTitle(URLDecoder.decode(article.getTitle(),"UTF-8"));
             article.setContent(URLDecoder.decode(article.getContent(),"UTF-8"));
+            User user = userService.getCurrentUser();
+            article.setAuthor(user.getUsername());
             articleService.saveArticle(article, tags);
         }catch (Exception e){
-            log.error(e.toString());
+            log.error(e.getMessage());
             return ResultInfoFactory.getErrorResultInfo("添加失败,请稍后再尝试");
         }
         return ResultInfoFactory.getSuccessResultInfo();
@@ -205,7 +203,7 @@ public class AdminArticleController {
             article.setContent(URLDecoder.decode(article.getContent(),"UTF-8"));
             articleService.updateArticle(article,tags);
         }catch (Exception e){
-            log.error(e.toString());
+            log.error(e.getMessage());
             ResultInfoFactory.getErrorResultInfo("修改失败,请稍后再试!");
         }
         return ResultInfoFactory.getSuccessResultInfo();
@@ -218,7 +216,7 @@ public class AdminArticleController {
 
             articleService.deleteArticle(id);
         }catch (Exception e){
-            log.error(e.toString());
+            log.error(e.getMessage());
             return ResultInfoFactory.getErrorResultInfo("删除失败!");
         }
         return ResultInfoFactory.getSuccessResultInfo();

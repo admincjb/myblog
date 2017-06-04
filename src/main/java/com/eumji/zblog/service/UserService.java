@@ -19,4 +19,6 @@ public interface UserService {
     void updatePassword(User user);
 
     void updateUserInfo(UserInfo userInfo);
+
+    User getCurrentUser();
 }
