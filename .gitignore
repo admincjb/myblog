@@ -1,4 +1,4 @@
-# Created by .ignore support plugin (hsz.mobi)
+# git提交忽略的配置配置文件，本身应该被忽略提交的，为了方便大家使用，故提交了
 ### Gradle template
 .gradle
 /build/
