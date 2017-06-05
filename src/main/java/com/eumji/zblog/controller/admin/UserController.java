@@ -28,6 +28,14 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    /**
+     * 邓丽的验证，暂时用不上
+     * 已经通过spring security去操作
+     * @param user
+     * @param session
+     * @return
+     */
     @RequestMapping(value = "/login/auth",method = RequestMethod.POST)
     public ResultInfo loginAuth(User user, HttpSession session){
         ResultInfo resultInfo = null;

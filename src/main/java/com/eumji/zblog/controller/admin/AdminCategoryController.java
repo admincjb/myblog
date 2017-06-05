@@ -153,6 +153,12 @@ public class AdminCategoryController {
         return ResultInfoFactory.getSuccessResultInfo();
     }
 
+    /**
+     * 删除制定id的分类
+     * 如果存在文章会将其移动到未分类
+     * @param categoryId
+     * @return
+     */
     @RequestMapping("/delete/{categoryId}")
     @ResponseBody
     public ResultInfo deleteCategory(@PathVariable Integer categoryId){

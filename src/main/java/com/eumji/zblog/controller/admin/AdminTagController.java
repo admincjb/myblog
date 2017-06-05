@@ -32,6 +32,12 @@ public class AdminTagController {
     private TagService tagService;
 
 
+    /**
+     * 初始化分页信息
+     * @param pager
+     * @param model
+     * @return
+     */
     @RequestMapping("/initPage")
     @ResponseBody
     public Pager initPage(Pager pager,Model model){
@@ -39,6 +45,12 @@ public class AdminTagController {
         return pager;
     }
 
+    /**
+     * 编辑一个标签
+     * @param id
+     * @param model
+     * @return
+     */
     @RequestMapping("/editJump/{id}")
     public String editPage(@PathVariable Integer id, Model model){
         Tag tag = tagService.getTagById(id);
@@ -46,11 +58,22 @@ public class AdminTagController {
         return "admin/label/labelEdit";
     }
 
+    /**
+     * 跳转到添加页面
+     * @return
+     */
     @RequestMapping("/addJump")
     public String addPage(){
         return "admin/label/labelAdd";
     }
 
+    /**
+     * 分页加载标签
+     * @param pager
+     * @param tagName
+     * @param model
+     * @return
+     */
     @RequestMapping("/load")
     public String loadTagList(Pager pager,String tagName,Model model){
         List<Tag> tagList = tagService.loadTagList(pager,tagName);
@@ -59,7 +82,11 @@ public class AdminTagController {
         return "admin/label/labelTable";
     }
 
-
+    /**
+     * 保存标签
+     * @param tag
+     * @return
+     */
     @RequestMapping("/save")
     @ResponseBody
     public ResultInfo saveTag(Tag tag){
@@ -76,6 +103,11 @@ public class AdminTagController {
         return ResultInfoFactory.getSuccessResultInfo();
     }
 
+    /**
+     * 更新标签
+     * @param tag
+     * @return
+     */
     @RequestMapping("update")
     @ResponseBody
     public ResultInfo updateTag(Tag tag){
@@ -86,7 +118,11 @@ public class AdminTagController {
         return ResultInfoFactory.getSuccessResultInfo();
     }
 
-
+    /**
+     * 删除一个标签
+     * @param id
+     * @return
+     */
     @RequestMapping("/delete/{id}")
     @ResponseBody
     public ResultInfo deleteTag(@PathVariable int id){

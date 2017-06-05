@@ -13,7 +13,12 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * Created by GeneratorFx on 2017-04-11.
+ * 前台文章处理controller
+ * FILE: com.eumji.zblog.controller.ArticleController.java
+ * MOTTO:  不积跬步无以至千里,不积小流无以至千里
+ * AUTHOR: EumJi
+ * DATE: 2017/5/8
+ * TIME: 15:15
  */
 @Controller
 @RequestMapping("/article")

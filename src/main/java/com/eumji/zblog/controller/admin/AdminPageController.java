@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
+ * 后端管理的页面跳转controller
  * FILE: com.eumji.zblog.controller.admin.AdminPageController.java
  * MOTTO:  不积跬步无以至千里,不积小流无以至千里
  * AUTHOR: EumJi
@@ -60,6 +61,11 @@ public class AdminPageController {
     }
 
 
+    /**
+     * 跳转标签展示页面
+     * @param model
+     * @return
+     */
     @RequestMapping("/tag/list")
     public String labelPage(Model model){
         UserInfo userInfo = userService.getUserInfo();

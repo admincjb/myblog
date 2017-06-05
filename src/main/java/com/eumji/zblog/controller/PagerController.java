@@ -15,7 +15,8 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @author Do
+ * 页面管理的controller
+ * @author EumJi
  * @package com.eumji.zblog.controller.admin
  * @name PagerController
  * @date 2017/4/11

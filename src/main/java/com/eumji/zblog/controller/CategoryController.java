@@ -14,7 +14,12 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * Created by GeneratorFx on 2017-04-11.
+ * 展示的分类controller
+ * FILE: com.eumji.zblog.controller.ArchiveController.java
+ * MOTTO:  不积跬步无以至千里,不积小流无以至千里
+ * AUTHOR: EumJi
+ * DATE: 2017/5/8
+ * TIME: 15:15
  */
 @Controller
 @RequestMapping("/categories")

@@ -7,14 +7,14 @@ import com.eumji.zblog.vo.Pager;
 import com.eumji.zblog.vo.Partner;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import javax.xml.transform.Result;
 import java.net.URLDecoder;
 
 /**
+ *
+ * 后台管理员的友链操作contributor
  * FILE: com.eumji.zblog.controller.admin.PartnerController.java
  * MOTTO:  不积跬步无以至千里,不积小流无以至千里
  * AUTHOR: EumJi
@@ -33,6 +33,11 @@ public class AdminPartnerController {
         return pager;
     }
 
+    /**
+     * 保存友链
+     * @param partner
+     * @return
+     */
     @RequestMapping("/save")
     public ResultInfo savePartner(Partner partner){
         try {
@@ -41,12 +46,18 @@ public class AdminPartnerController {
             partner.setSiteUrl(URLDecoder.decode(partner.getSiteUrl(), "utf-8"));
             partnerService.savePartner(partner);
         }catch (Exception e){
+
             return ResultInfoFactory.getErrorResultInfo();
         }
        return ResultInfoFactory.getSuccessResultInfo();
 
     }
 
+    /**
+     * 更新友链
+     * @param partner
+     * @return
+     */
     @RequestMapping("/update")
     public ResultInfo updatePartner(Partner partner) {
         try {
@@ -63,6 +74,12 @@ public class AdminPartnerController {
        return ResultInfoFactory.getSuccessResultInfo();
 
     }
+
+    /**
+     * 删除友链
+     * @param id
+     * @return
+     */
     @RequestMapping("/delete/{id}")
     public ResultInfo deletePartner(@PathVariable Integer id){
         try {
