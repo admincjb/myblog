@@ -181,3 +181,11 @@ PS： 作者前两天折腾linux了 哈哈哈
 ## License
 
 The eumji-blog is released under version 2.0 of the [Apache License](http://www.apache.org/licenses/LICENSE-2.0).
+
+## 2017年6月3日
+
+1.修复作者显示错误问题
+
+2.tag删除不了的问题
+
+3.更新资源位置未更新页面的问题
