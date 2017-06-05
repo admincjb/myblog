@@ -61,7 +61,7 @@
 3.如果运行有问题，请先检查查看一下错误的原因，一般来说是不会有大问题。
 
 ## 修改记录
-修改记录请参见 [修改记录](https://github.com/eumji025/EumJi-blog/blob/master/update-record.md)
+修改记录请参见 [修改记录](https://github.com/eumji025/EumJi-blog/tree/dev/update-record.md)
 
 ## License
 
