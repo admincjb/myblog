@@ -63,3 +63,8 @@
 })(jQuery);
 
 
+$("#avatar").on('click',function () {
+    window.location.href = "/";
+})
+
+
