@@ -116,6 +116,7 @@ public class  PageController {
 
     @RequestMapping("/popular")
     public String popularArticle(Model model){
+        UserInfo userInfo = userService.getUserInfo();
         List<Partner> partnerList = partnerService.findAll();
         List<CategoryCustom> categoryList = categoryService.initCategoryList();
         int articleCount = articleService.getArticleCount();
@@ -128,6 +129,7 @@ public class  PageController {
         model.addAttribute("articleList",articleList);
         model.addAttribute("categoryList",categoryList);
         model.addAttribute("partnerList",partnerList);
+        model.addAttribute("userInfo",userInfo);
         return "blog/popular";
     }
 
