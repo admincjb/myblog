@@ -1,13 +1,11 @@
 package com.eumji.zblog.controller;
 
 import com.eumji.zblog.service.*;
-import com.eumji.zblog.util.ResultInfo;
 import com.eumji.zblog.vo.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -63,6 +61,13 @@ public class ArticleController {
      */
     @RequestMapping("/details/{articleId}")
     public String loadArticle(@PathVariable Integer articleId, Model model){
+        ArticleCustom articleCustom = articleService.getArticleCustomById(articleId);
+        //新增判断，当文章不存在或文章不展示的情况下，会跳转到404页面
+        if (articleCustom == null){
+            return  "redirect:/404";
+        }
+
+        //当前文章的所有信息
         List<Partner> partnerList = partnerService.findAll();
         List<CategoryCustom> categoryList = categoryService.initCategoryList();
         //上一篇
@@ -75,8 +80,6 @@ public class ArticleController {
         int articleCount = articleService.getArticleCount();
         //标签总数量
         int tagCount = tagService.getTagCount();
-        //当前文章的所有信息
-        ArticleCustom articleCustom = articleService.getArticleCustomById(articleId);
 
         UserInfo userInfo = userService.getUserInfo();
 
