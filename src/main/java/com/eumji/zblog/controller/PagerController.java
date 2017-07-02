@@ -6,10 +6,7 @@ import com.eumji.zblog.service.TagService;
 import com.eumji.zblog.vo.ArticleCustom;
 import com.eumji.zblog.vo.Pager;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -59,9 +56,14 @@ public class PagerController {
      * @return
      */
     @RequestMapping("/pager/tags/{tagId}")
-    @ResponseBody
     public Pager initPage(Pager pager,@PathVariable Integer tagId){
         tagService.ArticleTagPage(pager,tagId);
+        return pager;
+    }
+
+    @GetMapping("/pager/archive/{createTime}")
+    public Pager loadArchivePager(Pager pager,@PathVariable String createTime){
+        pagerService.loadArchivePager(pager,createTime);
         return pager;
     }
 

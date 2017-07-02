@@ -30,4 +30,11 @@ public interface PagerService {
      * @param tagId
      */
     void loadTagPager(Pager pager, Integer tagId);
+
+    /**
+     * 初始化时间归档的分页信息
+     * @param pager
+     * @param createTime
+     */
+    void loadArchivePager(Pager pager, String createTime);
 }

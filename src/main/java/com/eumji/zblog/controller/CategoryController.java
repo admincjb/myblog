@@ -27,8 +27,6 @@ public class CategoryController {
 
     @Resource
     CategoryService categoryService;
-    @Resource
-    PartnerService  partnerService;
 
     /**
      * 获取某个标签的分页文章
@@ -46,21 +44,6 @@ public class CategoryController {
             model.addAttribute("categoryName",articleList.get(0).getCategoryName());
         }
         return "blog/part/categorySummary";
-    }
-
-    /**
-     * 跳转到分类的页面 暂时停用
-     * @param model
-     * @param categoryId
-     * @return
-     */
-    @Deprecated
-    @RequestMapping("/details/{categoryId}")
-    public String categoryPage(Model model,@PathVariable Integer categoryId){
-        List<Partner> partnerList = partnerService.findAll();
-        model.addAttribute("partnerList",partnerList);
-        model.addAttribute("categoryId",categoryId);
-        return "category";
     }
 
 

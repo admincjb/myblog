@@ -1,5 +1,6 @@
 package com.eumji.zblog.mapper;
 
+import com.eumji.zblog.vo.Pager;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -25,4 +26,11 @@ public interface PagerMapper {
      * @return
      */
     int loadTagPager(Integer tagId);
+
+    /**
+     * 初始化时间归档的分页信息
+     * @param createTime
+     * @return
+     */
+    int loadArchivePager(String createTime);
 }

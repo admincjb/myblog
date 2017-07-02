@@ -140,6 +140,8 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <!--开发中使用devtools 打包忽略-->
+                    <excludeDevtools>false</excludeDevtools>
                     <fork>true</fork>
                 </configuration>
             </plugin>

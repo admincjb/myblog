@@ -22,24 +22,24 @@
         </aside>
 
 
-        <section id="main">
-            <div id="loader-wrapper">
-                <div id="loader"></div>
-                <div class="loader-section section-left"></div>
-                <div class="loader-section section-right"></div>
-                <div class="load_title">正在加载EumJi站点....<br><span>V1.0</span></div>
-            </div>
-            <div id="main-article">
+        <section id="main" th:data-id="${tagId}">
+            <!-- <div id="loader-wrapper">
+                 <div id="loader"></div>
+                 <div class="loader-section section-left"></div>
+                 <div class="loader-section section-right"></div>
+                 <div class="load_title">正在加载EumJi站点....<br><span>V1.0</span></div>
+             </div>-->
+            <div id="main-article" th:insert="blog/part/tagSummary :: tag-summary">
 
             </div>
             <div style="margin-top: -29px;height:50px">
                 <div style="float: left;display: none" class="pagination">共
-                <span id="total-num"></span>
-                条记录
-                <span id="current-page"></span>
-                /
-                <span id="total-page"></span>
-            </div>
+                    <span id="total-num"></span>
+                    条记录
+                    <span id="current-page"></span>
+                    /
+                    <span id="total-page"></span>
+                </div>
 
 
                 <div id="pagination" data-type="article" class="pagination" style="float: right">
@@ -55,9 +55,9 @@
             <div class="widget-wrap" th:replace="blog/part/aphorism :: aphorism"></div>
             <!--文章分类-->
             <div class="widget-wrap" th:replace="blog/part/classification :: classification"></div>
-            <!--文章归档-->
+            <!--文章分类-->
             <div class="widget-wrap" th:replace="blog/part/article-archive :: article-archive"></div>
-           <!-- <div class="widget-wrap" th:replace="blog/part/label-info :: label-info"></div>-->
+            <!-- <div class="widget-wrap" th:replace="blog/part/label-info :: label-info"></div>-->
 
             <div id="toTop" class="fa fa-angle-up"></div>
         </aside>
@@ -68,7 +68,7 @@
 </div>
 <script src="/js/jquery.min.js"></script>
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<script src="/js/index.js"></script>
+<script src="/js/tag.js"></script>
 <script src="/js/article.click.js"></script>
 <script src="/js/share.js"></script>
 <script src="/js/jqPaginator.min.js"></script>

@@ -35,14 +35,14 @@ public class ArchiveController {
      * @param model
      * @return
      */
-    @RequestMapping("/createTime/load/{createTime}")
+    @RequestMapping("/archive/load/{createTime}")
     public String categoryList(@PathVariable String createTime, Pager pager, Model model){
         List<ArticleCustom> articleList = categoryService.loadArticleByArchive(createTime,pager);
         if (articleList != null && !articleList.isEmpty()) {
             model.addAttribute("articleList", articleList);
             model.addAttribute("pager", pager);
-            model.addAttribute("categoryName", createTime);
+            model.addAttribute("createTime", createTime);
         }
-        return "blog/part/categorySummary";
+        return "blog/part/archiveSummary";
     }
 }

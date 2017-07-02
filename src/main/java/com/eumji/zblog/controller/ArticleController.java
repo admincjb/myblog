@@ -82,7 +82,6 @@ public class ArticleController {
         int tagCount = tagService.getTagCount();
 
         UserInfo userInfo = userService.getUserInfo();
-
         model.addAttribute("lastArticle",lastArticle);
         model.addAttribute("nextArticle",nextArticle);
         model.addAttribute("article",articleCustom);
