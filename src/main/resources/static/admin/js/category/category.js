@@ -167,9 +167,9 @@ function saveEditCategory(){
             success  : function(data) {
                 if(data.resultCode == 'success'){
                     $('#editCategoryModal').modal('hide');
+                    loadCategoryList();
                     closeEditWindow();
                     autoCloseAlert(data.errorInfo,1000);
-                    window.location.href = "/admin/category/list";
                 }else{
                     autoCloseAlert(data.errorInfo,1000);
                 }
