@@ -28,6 +28,8 @@
 - flavr
 - thymeleaf
 - editor.md
+- [展示页面模板icarus](https://github.com/ppoffice/hexo-theme-icarus)
+
 
 
 # 安装步骤
@@ -58,12 +60,16 @@
 
 1.文章添加后默认是关闭的需要开启
 
-2.用户相关的操作暂时没有做，后续在考虑进行开发
-
-3.如果运行有问题，请先检查查看一下错误的原因，一般来说是不会有大问题。
+2.如果运行有问题，请先检查查看一下错误的原因，一般来说是不会有大问题。
 
 ## 修改记录
 修改记录请参见 [修改记录](https://github.com/eumji025/EumJi-blog/tree/dev/update-record.md)
+
+## 声明
+由于近期的一系列侵权抄袭事件,本项目使用了开源的hexo主题[hexo-theme-icarus](https://github.com/ppoffice/hexo-theme-icarus)并加以改造. 也发邮件请教了[程序猿DD-翟永超](https://github.com/dyc87112).
+后端的模板来源于开源项目,本项目的开源协议若有不当的地方,请告知!
+
+**净化开源环境人人有责!!!!**
 
 ## License
 
