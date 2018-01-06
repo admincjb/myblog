@@ -1,6 +1,6 @@
-package PACKAGE_NAME;
+package com.eumji.test;
 
-import com.eumji.zblog.Application;
+import com.eumji.zblog.BlogApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -20,7 +20,7 @@ import java.util.Random;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(classes = BlogApplication.class)
 public class ArticleTest {
 
     @Test

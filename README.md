@@ -62,12 +62,34 @@
 
 2.如果运行有问题，请先检查查看一下错误的原因，一般来说是不会有大问题。
 
+3.请自己配置百度推送的相关信息和骑牛云上传图片的相关配置(因为推送给我太多无用的链接了!!!)
+百度站长工具: http://ziyuan.baidu.com/dashboard/index <br>
+七牛云: https://portal.qiniu.com/
+
+```yml
+##七牛云的key
+qiniu:
+  accessKey:
+  secretKey:
+  bucketName:
+  basePath:
+
+## 百度推送
+baidu:
+  task:
+    postUrl:
+    baseUrl:
+
+
+```
+
 ## 修改记录
 修改记录请参见 [修改记录](https://github.com/eumji025/EumJi-blog/tree/dev/update-record.md)
 
 ## 声明
 由于近期的一系列侵权抄袭事件,本项目使用了开源的hexo主题[hexo-theme-icarus](https://github.com/ppoffice/hexo-theme-icarus)并加以改造. 也发邮件请教了[程序猿DD-翟永超](https://github.com/dyc87112).
 后端的模板来源于开源项目,本项目的开源协议若有不当的地方,请告知!
+
 
 **净化开源环境人人有责!!!!**
 
