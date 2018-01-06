@@ -1,12 +1,11 @@
 # eumji-blog
   
- -[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
+ [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 这个项目是使用spring boot + thymeleaf 开发个人博客项目.
 
-初期开发已经完成,网站已经上线.
-
-演示站: http://www.eumji025.com
+演示站下线了.太烧钱了.....<br>
+大家学学就好了,如果有毅力自己部署也是可以的.
 
 # 用户部分说明
 
@@ -34,31 +33,31 @@
 
 # 安装步骤
 
-0 - download or clone eumji-blog project
+0 - clone或者下载本项目
 
-1 - Create the database using the **eumji-blog.sql** file
+1 - 创建数据库zblog并导入跟目录eumji-blog.sql文件到数据库
 
-2 - update the database info in resource/application.yml
+2 - 更新 resources/application.yml中数据库连接配置和百度推送,七牛云的上次图片信息
 
-3 - compile the modules using the command **mvn package -DskipTests**
+3 - 编译项目: **mvn package -DskipTests** 或者导入ide,然后运行blogApplication.java
 
-4 - start the modules using the command **java -jar target/eumji-blog.jar**
+4 - 如果是编译项目,则使用 **java -jar target/eumji-blog.jar**
 
-5 - Type **http://localhost:8080/** into your browser
+5 - http://localhost:8080/ 访问你的主页
 
 
 ## 后台模块
 
-登陆路径 /login
+登陆路径 http://localhost:8080/login
 
-默认账号 admin
+默认账号 admin<br>
 默认密码 admin
 
-剩下的随意操作。
+剩下的自己玩吧!
 
 ##注意事项
 
-1.文章添加后默认是关闭的需要开启
+1.文章添加后默认是关闭的需要开启(关闭表示不展示)
 
 2.如果运行有问题，请先检查查看一下错误的原因，一般来说是不会有大问题。
 
