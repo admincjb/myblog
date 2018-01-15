@@ -1,5 +1,8 @@
 package com.eumji.zblog.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.color.ColorSpace;
@@ -13,6 +16,7 @@ import java.io.InputStream;
  */
 public class ImageCutUtil {
 
+    private static Logger logger = LoggerFactory.getLogger(ImageCutUtil.class);
     /**
      * 图像切割（改）     *
      *
@@ -50,7 +54,7 @@ public class ImageCutUtil {
                 ImageIO.write(tag, "JPEG", new File(dirImageFile));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
@@ -85,7 +89,7 @@ public class ImageCutUtil {
                 ImageIO.write(tag, "JPEG", dirImageFile);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
@@ -119,7 +123,7 @@ public class ImageCutUtil {
             g.dispose();
             ImageIO.write(tag, "JPEG", new File(result));// 输出到文件流
         } catch (IOException e) {
-            e.printStackTrace();
+           logger.error(e.getMessage());
         }
     }
 
@@ -156,7 +160,7 @@ public class ImageCutUtil {
             g.dispose();
             ImageIO.write(tag, "JPEG", new File(result));// 输出到文件流
         } catch (IOException e) {
-            e.printStackTrace();
+           logger.error(e.getMessage());
         }
     }
 
@@ -166,12 +170,18 @@ public class ImageCutUtil {
     public static void convert(String source, String result) {
         try {
             File f = new File(source);
-            f.canRead();
-            f.canWrite();
-            BufferedImage src = ImageIO.read(f);
-            ImageIO.write(src, "JPG", new File(result));
+            if (f.canRead()) {
+                BufferedImage src = ImageIO.read(f);
+                if (f.canWrite()) {
+                    ImageIO.write(src, "JPG", new File(result));
+                }else {
+                    logger.error("文件没有写的权限");
+                }
+            }else {
+                logger.error("文件没有读的权限");
+            }
         } catch (Exception e) {
-            e.printStackTrace();
+           logger.error(e.getMessage());
         }
     }
 
@@ -189,7 +199,7 @@ public class ImageCutUtil {
             src = op.filter(src, null);
             ImageIO.write(src, "JPEG", new File(result));
         } catch (IOException e) {
-            e.printStackTrace();
+           logger.error(e.getMessage());
         }
     }
 }
