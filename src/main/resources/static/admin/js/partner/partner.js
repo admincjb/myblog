@@ -2,6 +2,11 @@ $(function() {
     $("#partner-manage-li").addClass("active");
     $("#partner-list-li").addClass("active");
     $("#partner-list-li").parent().addClass("in");
+    initPage();
+});
+
+
+function initPage(){
     var page = $("#current-page").val();
     if (page == null || page == 0) {
         page = 1;
@@ -33,7 +38,7 @@ $(function() {
             }
         }
     });
-});
+}
 
 
 // 跳转分页
@@ -71,18 +76,20 @@ $("#partner-search").on('click',function () {
 
 // 删除栏目
 $("#dataList").on('click','.partner-delete',function () {
+    var id = $(this).parent().data("id")
     new $.flavr({
         content: '确定要删除吗?',
         buttons: {
             primary: {
                 text: '确定', style: 'primary', action: function () {
                     $.ajax({
-                        url: '/admin/partner/delete/' + $(this).parent().data("id"),
+                        url: '/admin/partner/delete/' + id,
                         method: "GET",
                         success: function (data) {
                             if (data.resultCode == 'success') {
+                                initPage();
                                 autoCloseAlert(data.errorInfo, 1000);
-                                loadPartnerList();
+
                             } else {
                                 autoCloseAlert(data.errorInfo, 1000);
                             }

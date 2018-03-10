@@ -2,6 +2,11 @@ $(function() {
     $("#label-manage-li").addClass("active");
     $("#label-list-li").addClass("active");
     $("#label-list-li").parent().addClass("in");
+   initPage();
+});
+
+function initPage() {
+
     var page = $("#current-page").val();
     if (page == null || page == 0) {
         page = 1;
@@ -33,9 +38,7 @@ $(function() {
 
         }
     });
-});
-
-
+}
 // 加载管理员列表
 function loadTagList(){
 	// 收集参数
@@ -75,8 +78,8 @@ $("#dataList").on('click','.tag-delete',function () {
                         method: "GET",
                         success  : function(data) {
                             if(data.resultCode == 'success'){
+                                initPage();
                                 autoCloseAlert(data.errorInfo,1000);
-                                window.location.href = "/admin/tag/list";
                             }else{
                                 autoCloseAlert(data.errorInfo,1000);
                             }
@@ -129,6 +132,7 @@ function saveEditTag(){
 	        	if(data.resultCode == 'success'){
 	        		$('#editTagModal').modal('hide');
                     loadTagList();
+
                     autoCloseAlert(data.errorInfo,1000);
                 }else{
 	        		autoCloseAlert(data.errorInfo,1000);
@@ -138,7 +142,7 @@ function saveEditTag(){
 	}
 }
 
-// 新增管理员
+// 保存标签
 function saveAddTag(){
 	if(validateAddTag()){
 		$.ajax({
@@ -146,8 +150,9 @@ function saveAddTag(){
 	        data : encodeURI($("#addForm").serialize()),
 	        success  : function(data) {
 	        	if(data.resultCode == 'success'){
+	        	    initPage();
+                    $('#addTagModal').modal('hide');
                     autoCloseAlert(data.errorInfo,1000);
-                    window.location.href = "/admin/tag/list";
 	        	}else{
 	        		autoCloseAlert(data.errorInfo,1000);
 	        	}

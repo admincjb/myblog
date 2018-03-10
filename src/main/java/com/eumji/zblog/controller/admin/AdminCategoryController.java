@@ -164,7 +164,7 @@ public class AdminCategoryController {
     public ResultInfo deleteCategory(@PathVariable Integer categoryId){
         boolean flag = categoryService.deleteCategoryById(categoryId);
         if (flag){
-            return ResultInfoFactory.getErrorResultInfo("删除分类成功！！！");
+            return ResultInfoFactory.getSuccessResultInfo("删除分类成功！！！");
         }
         return ResultInfoFactory.getErrorResultInfo();
     }

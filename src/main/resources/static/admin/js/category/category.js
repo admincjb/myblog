@@ -1,6 +1,12 @@
+
 $(function(){
     $("#category-manage-li").addClass("active");
     $("#category-list-li").addClass("active");
+initPage()
+
+
+})
+function initPage() {
     var page = $("#current-page").val();
     if (page==null || page ==0 ){
         page = 1;
@@ -31,9 +37,7 @@ $(function(){
             }
         }
     });
-
-
-})
+}
 
 
 // 跳转分页
@@ -92,7 +96,22 @@ $("#dataList").on('click','.category-delete',function () {
                     }
                 });
             }else {
-                deleteCategory(categoryId);
+                new $.flavr({
+                    content: '您确定要删除所选分类吗？？',
+
+                    buttons: {
+                        primary: {
+                            text: '确定', style: 'primary', action: function () {
+                                deleteCategory(categoryId);
+                            }
+                        },
+                        success: {
+                            text: '取消', style: 'danger', action: function () {
+
+                            }
+                        }
+                    }
+                });
             }
         }
 
@@ -104,7 +123,7 @@ function deleteCategory(id){
         url: "/admin/category/delete/"+id,
         success : function (data) {
             if(data.resultCode == 'success'){
-                window.href.location = "/admin/category/list";
+               initPage();
                 autoCloseAlert(data.errorInfo,1000);
             }else{
                 autoCloseAlert(data.errorInfo,1000);
@@ -148,9 +167,9 @@ function saveEditCategory(){
             success  : function(data) {
                 if(data.resultCode == 'success'){
                     $('#editCategoryModal').modal('hide');
+                    loadCategoryList();
                     closeEditWindow();
                     autoCloseAlert(data.errorInfo,1000);
-                    window.location.href = "/admin/category/list";
                 }else{
                     autoCloseAlert(data.errorInfo,1000);
                 }
@@ -168,7 +187,7 @@ function saveAddCategory(){
             success  : function(data) {
                 if(data.resultCode == 'success'){
                     $('#addCategoryModal').modal('hide');
-                    loadCategoryList();
+                    initPage();
                     closeAddWindow();
                     autoCloseAlert(data.errorInfo,1000);
                 }else{

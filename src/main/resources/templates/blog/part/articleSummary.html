@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="zh">
-<article th:each="article : ${articleList}" th:id="'/article/details/'+${article.id}" class="article article-type-post" itemscope itemprop="blogPost">
+<article th:each="article : ${articleList}" th:id="'/article/details/'+${article.id}" class="article article-type-post" itemscope itemprop="blogPost" th:fragment="article-summary">
     <div class="article-inner">
-
 
         <header class="article-header">
 
@@ -30,7 +29,7 @@
                     <a class="article-category-link" href="javascript:void(0);" th:data-id="${article.categoryId}" th:text="${article.categoryName}" style="cursor: pointer"></a>
                 </div>
 
-                <div class="share-container" style="text-transform: none;" th:each="tag : ${article.tagList}">
+                <div class="article-tag" style="text-transform: none;" th:each="tag : ${article.tagList}">
                     <i class="fa fa-tag"></i>
                     <!--th:href="'/tag/details/'+${tagListStat.tagId}"-->
                     <a class="article-tag-link" th:data-id="${tag.tagId}" th:text="${tag.tagName}" style="cursor: pointer"></a>

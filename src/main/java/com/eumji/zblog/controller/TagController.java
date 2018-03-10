@@ -23,7 +23,7 @@ import java.util.List;
 @RequestMapping("/tags")
 public class TagController {
 
-   @Resource
+    @Resource
     private TagService tagService;
 
     /**
@@ -33,18 +33,17 @@ public class TagController {
      * @param model 数据视图
      * @return
      */
-   @RequestMapping("/load/{tagId}")
+    @RequestMapping("/load/{tagId}")
     public String loadArticleByTag(Pager pager, @PathVariable Integer tagId, Model model){
-       List<ArticleCustom> articleList = tagService.loadArticleByTag(pager,tagId);
-       if (!articleList.isEmpty()){
-           model.addAttribute("articleList",articleList);
-           model.addAttribute("pager",pager);
-           //2017-05-07修复获取tag名称错误的问题,不应该从articlelist中取,因为每篇文章可能有多个tag
-           model.addAttribute("tagName",tagService.getTagById(tagId).getTagName());
-       }
+        List<ArticleCustom> articleList = tagService.loadArticleByTag(pager,tagId);
+        if (!articleList.isEmpty()){
+            model.addAttribute("articleList",articleList);
+            model.addAttribute("pager",pager);
+            //2017-05-07修复获取tag名称错误的问题,不应该从articlelist中取,因为每篇文章可能有多个tag
+            model.addAttribute("tagName",tagService.getTagById(tagId).getTagName());
+        }
 
-       return "blog/part/tagSummary";
-   }
+        return "blog/part/tagSummary";
+    }
 
 }
-

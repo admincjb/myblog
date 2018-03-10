@@ -39,4 +39,10 @@ public class PagerServiceImpl implements PagerService {
         int count = pagerMapper.loadTagPager(tagId);
         pager.setTotalCount(count);
     }
+
+    @Override
+    public void loadArchivePager(Pager pager, String createTime) {
+        int count = pagerMapper.loadArchivePager(createTime);
+        pager.setTotalCount(count);
+    }
 }

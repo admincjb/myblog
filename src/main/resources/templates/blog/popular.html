@@ -20,60 +20,62 @@
         </aside>
 
         <section id="main">
-            <article th:each="article : ${articleList}" th:id="'/article/details/'+${article.id}" class="article article-type-post" itemscope itemprop="blogPost">
-                <div class="article-inner">
+            <div id="main-article">
+                <article th:each="article : ${articleList}" th:id="'/article/details/'+${article.id}" class="article article-type-post" itemscope itemprop="blogPost">
+                    <div class="article-inner">
 
 
-                    <header class="article-header">
+                        <header class="article-header">
 
 
-                        <h1 itemprop="name">
-                            <a class="article-title" th:href="'/article/details/'+${article.id}" th:text="${article.title}"></a>
-                        </h1>
+                            <h1 itemprop="name">
+                                <a class="article-title" th:href="'/article/details/'+${article.id}" th:text="${article.title}"></a>
+                            </h1>
 
 
 
-                        <div class="article-meta">
+                            <div class="article-meta">
 
-                            <div class="article-date">
-                                <i class="fa fa-calendar"></i>
-                                <a th:href="'/article/details/'+${article.id}">
-                                    <time datetime="2017-04-03" itemprop="datePublished" th:text="${#dates.format(article.createTime,'yyyy-MM-dd')}"></time>
-                                </a>
+                                <div class="article-date">
+                                    <i class="fa fa-calendar"></i>
+                                    <a th:href="'/article/details/'+${article.id}">
+                                        <time datetime="2017-04-03" itemprop="datePublished" th:text="${#dates.format(article.createTime,'yyyy-MM-dd')}"></time>
+                                    </a>
+                                </div>
+
+
+
+                                <div class="article-category" style="text-transform: none;">
+                                    <i class="fa fa-folder"></i>
+                                    <!--th:href="'/category/details/'+${articleList.categoryId}"-->
+                                    <a class="article-category-link" href="javascript:void(0);" th:data-id="${article.categoryId}" th:text="${article.categoryName}" style="cursor: pointer"></a>
+                                </div>
+
+                                <div class="article-tag" style="text-transform: none;" th:each="tag : ${article.tagList}">
+                                    <i class="fa fa-tag"></i>
+                                    <!--th:href="'/tag/details/'+${tagListStat.tagId}"-->
+                                    <a class="article-tag-link" th:data-id="${tag.tagId}" th:text="${tag.tagName}" style="cursor: pointer"></a>
+                                </div>
                             </div>
 
+                        </header>
 
 
-                            <div class="article-category" style="text-transform: none;">
-                                <i class="fa fa-folder"></i>
-                                <!--th:href="'/category/details/'+${articleList.categoryId}"-->
-                                <a class="article-category-link" th:onclick="'loadCategory('+${article.categoryId}+')'"  th:text="${article.categoryName}" style="cursor: pointer"></a>
-                            </div>
+                        <div class="article-entry" itemprop="articleBody" th:text="${article.description}">
 
-                            <div class="share-container" style="text-transform: none;" th:each="tag : ${article.tagList}">
-                                <i class="fa fa-tag"></i>
-                                <!--th:href="'/tag/details/'+${tagListStat.tagId}"-->
-                                <a class="tag-link" th:onclick="'loadTag('+${tag.tagId}+')'"  th:text="${tag.tagName}" style="cursor: pointer"></a>
-                            </div>
                         </div>
-
-                    </header>
-
-
-                    <div class="article-entry" itemprop="articleBody" th:text="${article.description}">
-
+                        <div class="article-more">
+                            <p class="article-more-link">
+                                <!--th:href="'/article/details/'+${articleList.id}"-->
+                                <a title=" 查看更多 " class="read-more" th:href="'/article/details/'+${article.id}" style="cursor: pointer">查看更多</a>
+                            </p>
+                        </div>
+                        <footer class="article-footer">
+                            <div id="socialShare" class="socialShare"></div>
+                        </footer>
                     </div>
-                    <div class="article-more">
-                        <p class="article-more-link">
-                            <!--th:href="'/article/details/'+${articleList.id}"-->
-                            <a title=" 查看更多 " class="read-more" th:href="'/article/details/'+${article.id}" style="cursor: pointer">查看更多</a>
-                        </p>
-                    </div>
-                    <footer class="article-footer">
-                        <div id="socialShare" class="socialShare"></div>
-                    </footer>
-                </div>
-            </article>
+                </article>
+            </div>
         </section>
 
         <aside id="sidebar">
@@ -82,8 +84,9 @@
             <div class="widget-wrap" th:replace="blog/part/aphorism :: aphorism"></div>
             <!--文章分类-->
             <div class="widget-wrap" th:replace="blog/part/classification ::classification"></div>
-
-            <div class="widget-wrap" th:replace="blog/part/label-info :: label-info"></div>
+            <!--文章归档-->
+            <div class="widget-wrap" th:replace="blog/part/article-archive :: article-archive"></div>
+           <!-- <div class="widget-wrap" th:replace="blog/part/label-info :: label-info"></div>-->
 
             <div id="toTop" class="fa fa-angle-up"></div>
         </aside>
@@ -93,6 +96,7 @@
 
     <script src="/js/jquery.min.js"></script>
     <script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script src="/js/article.click.js"></script>
     <script src="/js/share.js"></script>
 </div>
 

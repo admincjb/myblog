@@ -6,7 +6,7 @@ function saveAddPartner(){
 	        success  : function(data) {
 	        	if(data.resultCode == 'success'){
 	        		$('#addPartnerModal').modal('hide');
-	            	loadPartnerList();
+	            	initPage();
 	            	autoCloseAlert(data.errorInfo,1000);
                     closeAddWindow();
 	        	}else{
