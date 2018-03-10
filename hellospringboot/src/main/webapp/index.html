@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>测试Ajax说话</title>
+<script type="text/javascript" src="jquery/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+	function say(){
+		$.post("/ajax/sayAjax",{},
+			function(result){
+				alert(result);
+				/* var jsonObj = eval(result);
+				alert(jsonObj.message1); */
+				var data = eval( '(' + result + ')' );
+				alert("data数据:["+data.message1+"|"+data.message2+"]");
+			}
+		);
+	}
+</script>
+</head>
+<body>
+	<button onclick="say()">说话</button>
+</body>
+</html>
