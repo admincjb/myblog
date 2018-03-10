@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ##七牛云的key
 qiniu:
   accessKey: canKgBzqR_AN_EviuOuWYUT4Vko3gi5dTNZFiQ4C
@@ -52,7 +51,6 @@ server:
 
 
 
-=======
 ##七牛云的key
 qiniu:
   accessKey:
@@ -105,5 +103,3 @@ server:
 
 
 
-
->>>>>>> branch 'master' of https://git.oschina.net/eumji025/zblog.git
