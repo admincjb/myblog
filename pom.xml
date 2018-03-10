@@ -63,7 +63,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.35</version>
+            <version>5.1.35</version><!--$NO-MVN-MAN-VER$-->
         </dependency>
 
         <!-- Apache公共类库 -->
