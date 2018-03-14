@@ -18,7 +18,7 @@
             <!--友情链接-->
             <div class="inner profile-inner" th:replace="blog/part/friend-link :: friend_link"></div>
             <!--微信公众号信息-->
-            <!--<div class="inner profile-inner" th:replace="blog/part/wechat-info :: wechat_info"></div>-->
+            <div class="inner profile-inner" th:replace="blog/part/wechat-info :: wechat_info"></div>
         </aside>
 
 
@@ -27,11 +27,9 @@
                 <div id="loader"></div>
                 <div class="loader-section section-left"></div>
                 <div class="loader-section section-right"></div>
-                <div class="load_title">正在加载EumJi站点....<br><span>V1.0</span></div>
+                <div class="load_title">正在加载我的站点....<br><span>V1.0</span></div>
             </div>
-            <div id="main-article">
-
-            </div>
+            <div id="main-article"></div>
             <div style="margin-top: -29px;height:50px">
                 <div style="float: left;display: none" class="pagination">共
                 <span id="total-num"></span>
@@ -41,7 +39,7 @@
                 <span id="total-page"></span>
             </div>
 
-
+				<!-- 文档中间部分 -->
                 <div id="pagination" data-type="article" class="pagination" style="float: right">
                 </div>
 
@@ -57,9 +55,10 @@
             <div class="widget-wrap" th:replace="blog/part/classification :: classification"></div>
             <!--文章归档-->
             <div class="widget-wrap" th:replace="blog/part/article-archive :: article-archive"></div>
-           <!-- <div class="widget-wrap" th:replace="blog/part/label-info :: label-info"></div>-->
+            <!-- 标签云 -->
+           	<div class="widget-wrap" th:replace="blog/part/label-info :: label-info"></div>
 
-            <div id="toTop" class="fa fa-angle-up"></div>
+            <!-- <div id="toTop" class="fa fa-angle-up"></div> -->
         </aside>
 
     </div>

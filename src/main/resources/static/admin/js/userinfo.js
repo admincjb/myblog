@@ -64,7 +64,8 @@ function isEmpty(str) {
 $("#update-userinfo").on('click',function () {
     $.ajax({
         url: "/admin/userinfo/get",
-        method: "GET",
+        method: "POST",
+        
         success: function (data) {
             $('#editUserInfoContent').html(data);
             $('#editUserInfoModal').modal('show');

@@ -1,7 +1,7 @@
 package com.eumji.zblog.util;
 
 /**
- * REST请求相应体
+ * REST请求响应体
  * FILE: com.eumji.zblog.util.ResultInfo.java
  * MOTTO:  不积跬步无以至千里,不积小流无以至千里
  * AUTHOR: EumJi

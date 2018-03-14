@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="zh">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>EumJi | 后台</title>
+    <title>JeBill博客 | 后台</title>
     <link href="/css/login.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
@@ -11,9 +11,9 @@
 <div class="login_m">
     <div class="login_logo">
         <!--<img src="/image/eumji.png" width="196" height="46">-->
-        <span>Admin Login</span>
+        <span>User Login</span>
     </div>
-  <!--  <div id="error-container">
+   <!-- <div id="error-container">
         <div class="flash flash-full flash-error">
             <div class="container">
                 <button class="flash-close js-flash-close" type="button" aria-label="Dismiss this message">
@@ -21,7 +21,7 @@
                 </button>
             </div>
         </div>
-    </div>-->
+    </div> -->
     <div class="login_boder">
         <form method="post" action="/login">
         <div class="login_padding" id="login_model">
@@ -37,15 +37,16 @@
             </label>
 
 
-            <p class="forgot"><a id="iforget" href="#">Forgot your password?</a></p>
+			<!-- 忘记密码 -->
+            <p class="forgot"><a id="iforget" onclick="iforget()" href="#">忘记密码?</a></p>
             <div class="rem_sub">
-              <!--  <div class="rem_sub_l">
-                    <label for="checkbox">Remember me</label>
-                    <input id="checkbox" type="checkbox" name="checkbox" id="save_me">
-                </div>-->
+               <div class="rem_sub_l">
+                    <label for="checkbox">记住密码</label>
+                    <input type="checkbox" name="checkbox" id="save_me">
+                </div>
                 <label>
                     <div class="rem_sub_l">
-                        <input type="submit" class="sub_button" name="button" id="login-button" value="Sign In">
+                        <input type="submit" class="sub_button" name="button" id="login-button" onclick="loginSubmit()" value="Sign In">
                     </div>
                 </label>
             </div>
@@ -57,8 +58,8 @@
 
             <h1>Forgot password</h1>
             <br>
-            <div class="forget_model_h2">(Please enter your registered email below and the system will automatically
-                reset users’ password and send it to user’s registered email address.)
+            <div class="forget_model_h2">(Please Enter Your Registered Email Below And The System Will Automatically
+                Reset Users’ Password And Send It To User’s Registered Email Address.)
             </div>
             <label>
                 <input type="text" id="usrmail" class="txt_input txt_input2">

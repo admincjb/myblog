@@ -13,7 +13,7 @@ $("input").keydown(function(e){
 });
 
 
-
+// 提交登录信息
 function loginSubmit(){
 
     var username = $("#username").val();
@@ -22,12 +22,19 @@ function loginSubmit(){
         $.ajax({
             type: "POST",
             url: '/login/auth',
-            data: {username: username, password: password},
+            data: 
+            {
+            	username : username, 
+            	password : password
+            },
+            before : function(){
+            	alert("before");
+            }
             success: function (data) {///去更新cookies
                 if (data.resultCode == "success") {
                     window.location.href = "/admin/article/list";
-
                 }else{
+                	alert("账号或密码错误！");
                     layer.alert('账号或者密码错误', {
                         icon: 2,
                     });
@@ -49,7 +56,13 @@ $("#iforget").click(function () {
 
 });
 
-///取回密码
+
+/**
+ * 
+ * 功能有待开发：邮箱验证
+ * @returns
+ */
+// 取回密码
 $("#Retrievenow").click(function () {
     var usrmail = $("#usrmail").val();
     if (!Test_email(usrmail)) {

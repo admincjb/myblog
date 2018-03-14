@@ -5,7 +5,7 @@ import com.eumji.zblog.vo.UserInfo;
 /**
  * 获取错误信息的工具类
  * FILE: com.eumji.zblog.util.UserInfoUtil.java
- * MOTTO:  不积跬步无以至千里,不积小流无以至千里
+ * MOTTO:  不积跬步无以至千里,不积小流无以成江海
  * AUTHOR: EumJi
  * DATE: 2017/4/9
  * TIME: 15:39
@@ -15,7 +15,7 @@ public class ResultInfoFactory {
     public static ResultInfo SUCCESS_RESULT;
 
     /**
-     * 带错误信息错误信息相应体
+     * 带错误信息错误信息响应体
      * @param errorInfo
      * @return
      */
@@ -38,7 +38,7 @@ public class ResultInfoFactory {
     }
 
     /**
-     * 带参数正确的实体相应题
+     * 带参数正确的实体响应体
      * @param errorInfo
      * @return
      */
@@ -52,7 +52,7 @@ public class ResultInfoFactory {
     }
 
     /**
-     * 不带参数正确的信息相应体
+     * 不带参数正确的信息响应体
      * 默认为错误信息为操作成功
      * @return
      */
