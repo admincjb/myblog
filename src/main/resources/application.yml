@@ -15,7 +15,7 @@ baidu:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/zblog
+    url: jdbc:mysql://localhost:3306/myblog
     username: root
     password: admincjb
   thymeleaf:
@@ -33,7 +33,7 @@ spring:
 
 #mybatis配置
 mybatis:
-  type-aliases-package: com.eumji.zblog.vo
+  type-aliases-package: com.my.blog.vo
   #mapper加载路径
   mapper-locations: classpath:mapper/*Mapper.xml
   #myatbis配置文件

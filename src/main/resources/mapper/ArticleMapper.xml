@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.eumji.zblog.mapper.ArticleMapper">
+<mapper namespace="com.my.blog.mapper.ArticleMapper">
     <cache eviction="LRU" flushInterval="60000" readOnly="true"/>
-    <resultMap id="article" type="com.eumji.zblog.vo.ArticleCustom">
+    <resultMap id="article" type="com.my.blog.vo.ArticleCustom">
         <id column="id" property="id"></id>
         <result column="categoryId" property="categoryId"/>
         <result column="title" property="title"/>

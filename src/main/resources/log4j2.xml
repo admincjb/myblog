@@ -19,7 +19,7 @@
         <logger name="log4j.logger.java.sql" level="debug" additivity="false">
             <appender-ref ref="Console"/>
         </logger>
-        <logger name="com.eumji.zblog.mapper" level="debug" />
+        <logger name="com.my.blog.mapper" level="debug" />
         <root level="info">
             <appenderref ref="Console" />
         </root>
